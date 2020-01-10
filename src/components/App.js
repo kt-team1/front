@@ -5,8 +5,9 @@ import Home from '../screens/Home';
 import Search from '../screens/Search';
 import OnlineExhibition from '../screens/OnlineExhibition';
 import SearchDetail from '../screens/SearchDetail';
-import ExhibitionDetail from '../screens/ShowExhibition';
+import ShowExhibition from '../screens/ShowExhibition';
 import Picture from '../screens/ShowPicDetail';
+import ExhibitionDetail from '../screens/ExhibitionDetail';
 
 
 class App extends Component {
@@ -15,7 +16,7 @@ class App extends Component {
       <Router>
         <Route exact path="/" component={Home}>
           <Home />
-        </Route>
+        </Route> 
         <Route exact path="/search" component={Search}>
           <Search />
         </Route>
@@ -27,6 +28,9 @@ class App extends Component {
         </Route>
         <Route exact path="/exhibition/detail" component={ExhibitionDetail}>
           <ExhibitionDetail />
+        </Route>
+        <Route exact path="/exhibition/detail/main" component={ShowExhibition}>
+          <ShowExhibition />
         </Route>
         <Route exact path="/exhibition/detail/pic" component={Picture}>
           <Picture />
