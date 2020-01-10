@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SearchList from '../components/SearchList';
 import {Container, Header, Button, Card, Image, Icon, Grid, GridColumn, Segment, Menu, Table} from 'semantic-ui-react'
 import axios from "axios"
+import ReactDOM from "react-dom";
 
 const getResults = async () => {
     try {
@@ -50,11 +51,12 @@ const CardExample = () => (
       <Header textAlign="center" as='h2'>{message}</Header>
       <Grid columns={2}>
         <Grid.Column>
-            <div style={{
+            <div id='map_div' style={{
                 width:'100%',
                 height:'100%',
                 background:'red'
             }}>
+                {extra}
             </div>
         </Grid.Column>
 
@@ -78,10 +80,20 @@ const CardExample = () => (
 class Search extends React.Component {
     state = {
       searchResultMessage: "...을 검색한 결과입니다."
+
     };
     
+
     async componentDidMount(){
-        // showResults();
+        var mapOpts = {
+            center: new window.olleh.maps.UTMK(960823.7, 1945435.52),
+            zoom: 8,
+            mapTypeId: 'ROADMAP'
+        };
+
+        var map = new window.olleh.maps.Map(document.getElementById("map_div",),
+            mapOpts
+        );
     }
 
     render() {
