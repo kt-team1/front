@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import Card from './Card';
 
 class Recommendation extends Component {
     render() {
         return (
             <div class="recommendation">
-                <p>This is Recommendation</p>
+                <h1>추천 전시</h1>
+                <Card/>
             </div>
         );
     }
