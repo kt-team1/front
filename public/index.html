@@ -1,84 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta name="viewport" content="height=1080, width=1920, user-scalable=no" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+<meta http-equiv="Content-Type" Content="text/html; charset=utf-8" />
+<meta name="viewport" content="height=1080, width=1920, user-scalable=no" />
+<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+<meta name="theme-color" content="#000000" />
+<meta name="description" content="Web site created using create-react-app" />
+<link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  
+<style type ="text/css">
+body {background-color: rgb(255, 255, 255);}
+h1   {
+    color: rgb(138, 14, 82);
+    text-align: center;
+    margin-top: 10%;
+    font-size: 500%;
+}
+</style>
+
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
   <title>기가지니, 전시회를 부탁해!</title>
 <script type="text/javascript"
       src="https://gis.kt.com/maps/v3.0/sdk.js?key=642dd03a4712cef8bb36de4d06f8dd86565a738470cb4c697fa6cbcff6f8c65c6a66b0c4">
    </script>
 </head>
 
-
 <script type="text/javascript" src="http://svcapi.gigagenie.ai/sdk/v1.0/js/gigagenie.js"></script>
 <script type="text/javascript">
-  var options = {};
-  // 서비스 초기화
-  function init() {
-    options = {};
-    options.keytype = "GBOXDEVM"; // 개발(GBOXDEVM) 또는 상용(GBOXCOMM) 키 종류 입력
-    options.apikey = "RTUwMDQwMTB8R0JPWERFVk18MTU3NzY5NjcwMjQxOQ=="; // 개발자 포털에서 키를 발급받아 입력
+var options={};
+// 서비스 초기화
+function init(){
+    console.log("inittttttt");
+    options={};
+	options.keytype="GBOXDEVM"; // 개발(GBOXDEVM) 또는 상용(GBOXCOMM) 키 종류 입력
+	options.apikey="RTUwMDQwMTB8R0JPWERFVk18MTU3NzY5NjcwMjQxOQ=="; // 개발자 포털에서 키를 발급받아 입력
+    
+    gigagenie.init(options,function(result_cd,result_msg,extra){
+        if(result_cd===200){
+            //init 성공
+            console.log('Initialize Success');
+            //함수 호출 및 개발 진행
+	};
+	});
+}
 
-    gigagenie.init(options, function (result_cd, result_msg, extra) {
-      if (result_cd === 200) {
-        //init 성공
-        console.log('헬로 지니 실행, Initialize Success');
-        //함수 호출 및 개발 진행
-
-        //callback 방식
-        var options = {};
-        options.ttstext = "안녕하세요. 지니에요. 원하시는 기능을 추가해보세요.";
-        gigagenie.voice.sendTTS(options, function (result_cd, result_msg, extra) {
-          if (result_cd === 200) {
-            //do next action
-          } else {
-            //extra.reason 에 voice 오류 전달.
-          };
-        });
-      };
-    });
-  }
-
-  // 서비스 종료 명령 수신 API
-  gigagenie.voice.onRequestClose = function () {
-    options = {};
-    gigagenie.voice.svcFinished(options, function (result_cd, result_msg, extra) {
-    });
-  };
+// 서비스 종료 명령 수신 API
+gigagenie.voice.onRequestClose=function(){
+	options={};
+	gigagenie.voice.svcFinished(options,function(result_cd,result_msg,extra){
+	});
+};
 </script>
+</head>
 
 <body onload=init()>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
-  <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
 </body>
-
 </html>
