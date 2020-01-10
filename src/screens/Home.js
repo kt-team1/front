@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 import Recommendation from '../components/Recommendation';
+import SearchBar from '../components/Searchbar';
 
 
 class Home extends Component {
     render() {
         return (
-            <Recommendation/>
+            <div class="home">
+                <Recommendation />
+                <SearchBar />
+            </div>
         );
     }
 }
