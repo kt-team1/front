@@ -3,6 +3,7 @@ import Map from '../components/Map';
 import SearchList from '../components/SearchList';
 import {Container, Header, Button, Card, Image, Icon, Grid, GridColumn, Segment, Menu, Table} from 'semantic-ui-react'
 import axios from "axios"
+import CardsCarousel from '../components/CardsCarousel';
 
 const getResults = async () => {
     try {
@@ -64,7 +65,8 @@ const CardExample = () => (
                     </div>
                   </Grid.Row>
                     <Grid.Row>
-                        <div>{CardExampleGroups()}</div>
+                        {/* <div>{CardExampleGroups()}</div> */}
+                        <CardsCarousel infos="넘길정보들"/>
                     </Grid.Row>
                     <Grid.Row>
                     <div>
@@ -72,7 +74,8 @@ const CardExample = () => (
                     </div>
                   </Grid.Row>
                     <Grid.Row>
-                        <div>{CardExampleGroups()}</div>
+                        {/* <div>{CardExampleGroups()}</div> */}
+                        <CardsCarousel infos="넘길정보들"/>
                     </Grid.Row>
                 </Container>
           </div>
@@ -96,8 +99,9 @@ class Search extends React.Component {
         })
     }
 
-    // async componentDidMount() {
-    // }
+    async componentDidMount() {
+      {showResults()}
+    }
 
     render() {
         console.log(this.state.searchResultMessage)
