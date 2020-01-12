@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios"
 
-
-
-
-
 //--- 하단은 gis 관련 코드입니다. ---
 function markerDisplay(res, map){
     res.data.DATA.some((element, idx) => {
@@ -49,21 +45,6 @@ class Map extends Component {
         //   }).then(res => {
         //     markerDisplay(res, map);
         //   }).catch(err => console.log(err));
-         
-          axios({
-            method:'post',
-            url : 'https://apilink.kt.co.kr/base/search/v1/utilities/geocode?',
-            data: {
-              addressText: '광화문'
-            }
-          }).then(res => {
-            console.log(res);
-          }).catch(err => console.log(err));
-
-          // axios.post('https://apilink.kt.co.kr/base/search/v1/utilities/geocode?mode=ALL&children=ON&start=0&numberOfResults=10&startOfAddress=0&numberOfAddressResults=1&sortBy=relevance&specifiablePOIOptions.sor tBase=POI&specifiablePOIOptions.sor tBy=relevance&specifiablePOIOptions.rad ius=3000m&_all=_all&match=false', {addressText:	
-          // "kt"}).then(res => {
-          //   console.log(res);
-          // })
     }
 
     render() {
