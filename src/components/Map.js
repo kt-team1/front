@@ -8,7 +8,7 @@ function markerDisplay(res, map){
         let point = latlngToUtmk(element.ycode, element.xcode)
         let marker = new window.olleh.maps.overlay.Marker({
           position: point,
-          caption: '공영주차장',
+          // caption: '공영주차장',
           map: map
         });
         // marker.setIcon('https://www.gunpopark.or.kr/images/main/about_icon.png');
@@ -38,13 +38,13 @@ class Map extends Component {
             mapOpts
         );
 
-        // axios({
-        //     method:'get',
-        //     url : 'https://kt_map.gitlab.io/data/public_parking.json',
-        //     responseType: 'json',
-        //   }).then(res => {
-        //     markerDisplay(res, map);
-        //   }).catch(err => console.log(err));
+        axios({
+            method:'get',
+            url : 'https://kt_map.gitlab.io/data/public_parking.json',
+            responseType: 'json',
+          }).then(res => {
+            markerDisplay(res, map);
+          }).catch(err => console.log(err));
     }
 
     render() {

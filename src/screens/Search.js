@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Map from '../components/Map';
-import { markerDisplay } from '../components/Map';
 import axios from "axios"
 import Exhibition from '../components/Exhibition'
 import '../css/Search.css'
-import { Grid, Image, Button } from 'semantic-ui-react'
+import { Grid, Button } from 'semantic-ui-react'
 
 const getMap = () => (
   <div>
@@ -243,11 +242,22 @@ class Search extends React.Component {
                   <Grid.Column>
                     {/* 버튼들 들어갈곳 */}
                     <div className="buttons">
-                      <Button size="huge" labelPosition='left' icon='left chevron' content='Prev' onClick={() => {
-                        if (page>0) {
-                          this.nextPaging(exhibitions, page-1);
-                        } 
-                      }}/>
+                      {page == 0 ? (
+                        <Button disabled size="huge" labelPosition='left' icon='left chevron' content='Prev' onClick={() => {
+                          if (page>0) {
+                            this.nextPaging(exhibitions, page-1);
+                          } 
+                        }}/>
+                      ) : (
+                        <Button size="huge" labelPosition='left' icon='left chevron' content='Prev' onClick={() => {
+                          if (page>0) {
+                            this.nextPaging(exhibitions, page-1);
+                          } 
+                        }}/>
+                      )}
+                      <div style={{color: 'white'}}>
+                        <h1 style={{marginTop: '1rem'}}>({page+1}/{maxPage+1})</h1>
+                      </div>
                       <Button size="huge" labelPosition='right' icon='right chevron' content='Next' onClick={() => {
                         if (page<maxPage) {
                           this.nextPaging(exhibitions, page+1);

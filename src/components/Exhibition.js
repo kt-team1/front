@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes, { func } from "prop-types";
 // import '../css/Exhibition.css'
-import { Card, Icon, Image, Button } from 'semantic-ui-react'
+import { Card, Image} from 'semantic-ui-react'
 
 const numberingWithIndex = (index) => {
     switch (index) {
@@ -29,7 +29,9 @@ const numberingWithIndex = (index) => {
 function Exhibition({id, title, place, address, date, time, price, poster, index}){
     console.log(index);
     return (
-        <Card style={{height:'210px'}}>
+        <Card style={{height:'215px'}} onClick={() => {
+            alert(id)
+          }}>
             <Card.Content>
                 <Image
                 floated='right'
