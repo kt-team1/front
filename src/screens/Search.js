@@ -54,8 +54,7 @@ class Search extends React.Component {
       <div>
         <div className="searchMessage" style={{
             width:'100%',
-            height:'20%',
-            backgroundColor: 'yellow'
+            height:'20%'
           }}>
             <h1>keyword에 대한 검색결과 입니다.</h1>
           </div>
@@ -66,15 +65,9 @@ class Search extends React.Component {
             </div>
           ) : (
             <section className="container">
-              <div className="map" style={{
-                    width:'30%',
-                    backgroundColor: 'red'
-                  }}>
+              <div className="map_container">
                     
-                <div id='map_div' style={{
-                    width:'80%',
-                    height:'60%'
-                  }}>
+                <div id='map_div'>
                     {getMap()}
                 </div>
               </div>
@@ -93,13 +86,15 @@ class Search extends React.Component {
                       />
                     ))}
               </div>
-              <Button variant="contained" onClick={() => {
-                  this.nextPaging(exhibitions, page+1);
-                }}>다음</Button>
             </section>
           )
         }
         </section>
+        <div>
+          <Button variant="contained" onClick={() => {
+            this.nextPaging(exhibitions, page+1);
+          }}>다음</Button>
+        </div>
       </div>
       )
     }
