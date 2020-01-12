@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Map from '../components/Map';
-import SearchList from '../components/SearchList';
 import {Container, Header, Button, Card, Image, Icon, Grid, GridColumn, Segment, Menu, Table} from 'semantic-ui-react'
 import axios from "axios"
 

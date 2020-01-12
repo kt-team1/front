@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   cardGrid: {
     paddingTop: theme.spacing(6),
-    paddingBottom: theme.spacing(8),
+    paddingBottom: theme.spacing(6),
   },
   card: {
     width: '130%',
@@ -30,14 +30,14 @@ const useStyles = makeStyles(theme => ({
 
 const cards = [1, 2, 3, 4];
 
-export default function Album() {
+export default function Album({ space }) {
   const classes = useStyles();
-
+  console.log(space);
   return (
     <React.Fragment>
       <CssBaseline />
       <main>
-          <Grid container spacing={9}>
+          <Grid container spacing={space}>
             {cards.map(card => (
               <Grid item key={card} xs={12} sm={6} md={3}>
                 <Card className={classes.card}>
@@ -49,15 +49,10 @@ export default function Album() {
                   <CardContent className={classes.cardContent}>
                     <Typography>
                     <strong>[광장: 미술과 사회 1900-2019] 2부 연계 다원예술프로젝트 퍼포먼스</strong><br/>
-                      기간: 2020.01.11. ~ 2020.01.15 <br/>
+                      기간: 2020.01.11. ~ 2020.01.15. <br/>
                       장소: 국립현대미술관 서울관
                     </Typography>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      상세 정보 보기
-                    </Button>
-                  </CardActions>
                 </Card>
               </Grid>
             ))}
