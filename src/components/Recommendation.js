@@ -5,7 +5,7 @@ class Recommendation extends Component {
     render() {
         return (
             <div class="recommendation">
-                <h1>추천 전시</h1>
+    <h1>{this.props.title}</h1>
                 <Album />
             </div>
         );

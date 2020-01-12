@@ -16,23 +16,19 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(8),
   },
   card: {
-    height: '80%',
+    width: '130%',
     display: 'flex',
     flexDirection: 'column',
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '70%', // 16:9
   },
   cardContent: {
     flexGrow: 1,
   },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
-  },
 }));
 
-const cards = [1, 2, 3];
+const cards = [1, 2, 3, 4];
 
 export default function Album() {
   const classes = useStyles();
@@ -41,20 +37,18 @@ export default function Album() {
     <React.Fragment>
       <CssBaseline />
       <main>
-          <Grid container spacing={3}>
+          <Grid container spacing={9}>
             {cards.map(card => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+              <Grid item key={card} xs={12} sm={6} md={3}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
+                    image="http://www.mmca.go.kr/upload/education/2019/11/2019110104024045812846.jpg"
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      전시회 이름
-                    </Typography>
                     <Typography>
+                    <strong>[광장: 미술과 사회 1900-2019] 2부 연계 다원예술프로젝트 퍼포먼스</strong><br/>
                       기간: 2020.01.11. ~ 2020.01.15 <br/>
                       장소: 국립현대미술관 서울관
                     </Typography>

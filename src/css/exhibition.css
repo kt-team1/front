@@ -1,0 +1,13 @@
+div.exhibition_list {
+    width: 50vw;
+    margin: auto;
+}
+
+div.info_bar {
+    height: 15%;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 2px 2px 10px black;
+    color: white;
+}

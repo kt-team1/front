@@ -3,28 +3,24 @@ div.home {
 }
 
 div.home_search_bar {
+    /* display: inline; */
     float: left;
-    width: 33%;
-    height: 100%;
+    width: 25vw;
+    height: 100vh;
     text-align: center;
-    padding: 100px;
+    padding-top: 1.5em;
     background-color: rgba(0, 0, 0, 0.7);
     text-shadow: 2px 2px 10px black;
 }
 
 div.home_lists {
-    float: right;
-    width: 60%;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: 60px;
+    /* display: inline; */
+    float: left;
+    width: 60vw;
+    margin-left: 3vw;
 }
 
-div.recommendation h1, div.exhibition_list h1 {
+div.recommendation h1 {
     text-align: left;
     text-shadow: 2px 2px 10px black;
-}
-
-div.recommendation {
-    margin-bottom: 5%;
 }
