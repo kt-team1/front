@@ -16,32 +16,36 @@ class InfoBar extends Component {
     }
 }
 
-class List extends Component {
-    render() {
-        return (
-            <div class="exhibition_list">
-                <Album space="9"/>
-                <Album space="9"/>
-            </div>
-        );
-    }
-}
-
 class OnlineExhibition extends Component {
-    getExhibitions = async () => {
-        const {
-            data: {
-                search
-            }
-        } = await axios.get('http://211.254.213.185:5000/searchapi');
-        const maxPage = parseInt(search.length / 6);
+    state = {
+        count: 8,
+        list: []
+    };
+    
+    async getExhibitions() {
+        const response = await axios.get('http://211.254.213.185:5000/searchapi');
+        // console.log(response['data']['search']);
+        let data = response['data']['search'];
+        console.log(data.length);
+
+        for (var i=0; i < 6; i++) {
+            var randnum = Math.floor(Math.random() * 163) + 1;
+            this.state.list.push(data[randnum]);
+        }
+    }
+
+    async componentDidMount() {
+        this.getExhibitions();
     }
 
     render() {
         return (
             <div class="online_exhibition">
                 <InfoBar />
-                <List />
+                <div class="exhibition_list">
+                    <Album space="9" count={this.state.count} list={this.state.list}/>
+                    {/* <Album space="9" /> */}
+                </div>
             </div>
         );
     }

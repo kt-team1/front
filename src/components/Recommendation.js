@@ -6,7 +6,7 @@ class Recommendation extends Component {
         return (
             <div class="recommendation">
                 <h1>{this.props.title}</h1>
-                <Album space="10" />
+                <Album space="10" count="4" />
             </div>
         );
     }

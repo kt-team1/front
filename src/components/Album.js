@@ -28,11 +28,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const cards = [1, 2, 3, 4];
 
-export default function Album({ space }) {
+
+export default function Album({ space, count, list }) {
   const classes = useStyles();
-  console.log(space);
+  const cards = [];
+  for (var i = 0; i < count; i++) {
+    cards.push(i);
+  }
+ 
+  // console.log(space);
+  // console.log(list);
   return (
     <React.Fragment>
       <CssBaseline />
