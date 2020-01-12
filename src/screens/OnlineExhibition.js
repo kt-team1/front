@@ -26,12 +26,15 @@ class OnlineExhibition extends Component {
         const response = await axios.get('http://211.254.213.185:5000/searchapi');
         // console.log(response['data']['search']);
         let data = response['data']['search'];
-        console.log(data.length);
-
-        for (var i=0; i < 6; i++) {
+        // console.log(data[0]);
+        
+        var list = []
+        for (var i=0; i < 8; i++) {
             var randnum = Math.floor(Math.random() * 163) + 1;
-            this.state.list.push(data[randnum]);
+            list.push(data[randnum]);
         }
+
+        this.setState({ list:list });
     }
 
     async componentDidMount() {
