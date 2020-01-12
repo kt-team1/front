@@ -13,16 +13,10 @@ const getMap = () => (
 )
 
 const pagingExhibitions = (exhibitions, page) => {
-  console.log(page);
   const pagedExhibitions = [];
-  console.log(exhibitions);
-  console.log(exhibitions[7]);
   for (let index = page*6; index < (page+1)*6; index++) {
-    console.log(exhibitions[index]);
     pagedExhibitions.push(exhibitions[index]);
   }
-  console.log(pagedExhibitions);
-
   return pagedExhibitions;
 }
 
@@ -41,25 +35,17 @@ class Search extends React.Component {
             search
           }
       } = await axios.get('http://211.254.213.185:5000/searchapi');
-      console.log(search);
       const pagedExhibitions = pagingExhibitions(search, 0);
       this.setState({exhibitions: search, currentExhibitions:pagedExhibitions, isLoading: false})
-      console.log("aaaaaa");
-      console.log(search);
-      console.log("bbbbb");
     }
 
     async componentDidMount() {
       this.getExhibitions();
     }
 
-    nextPaging = () => {
-      console.log("nextPaging");
-      const { exhibitions, page } = this.state
-      console.log({exhibitions});
-      const pagedExhibitions = pagingExhibitions({exhibitions}, 1);
-      console.log(pagedExhibitions);
-      this.setState({currentExhibitions: pagedExhibitions, page: page+1})
+    nextPaging = (exhibitions, page) => {
+      const pagedExhibitions = pagingExhibitions(exhibitions, page)
+      this.setState({currentExhibitions: pagedExhibitions, page: page})
     }
 
   render() {
@@ -95,8 +81,8 @@ class Search extends React.Component {
               <div className="exhibitions">
                   {currentExhibitions.map(exhibition => (
                     <Exhibition
-                      key={exhibition.id}
-                      id={exhibition.id}
+                      key={exhibition.exhibit_id}
+                      id={exhibition.exhibit_id}
                       title={exhibition.title}
                       place={exhibition.place}
                       address={exhibition.address}
@@ -108,8 +94,7 @@ class Search extends React.Component {
                     ))}
               </div>
               <Button variant="contained" onClick={() => {
-                  this.nextPaging();
-                  console.log({exhibitions});
+                  this.nextPaging(exhibitions, page+1);
                 }}>다음</Button>
             </section>
           )
