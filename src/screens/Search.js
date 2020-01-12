@@ -1,23 +1,10 @@
 import React, { Component } from 'react';
 import Map from '../components/Map';
-import SearchList from '../components/SearchList';
-import {Container, Header, Button, Card, Image, Icon, Grid, GridColumn, Segment, Menu, Table} from 'semantic-ui-react'
+import { markerDisplay } from '../components/Map';
+import {Container, Header, Button, Card, Image, Icon, Grid, GridColumn, Segment, Menu, Table, Form} from 'semantic-ui-react'
 import axios from "axios"
-import CardsCarousel from '../components/CardsCarousel';
-
-const getResults = async () => {
-    try {
-      return await axios.get('http://211.254.213.185:5000/searchapi');
-    } catch (error) {
-      console.error(error);
-    }
-};
-  
-const showResults = async () => {
-    const results = await getResults();
-    
-    console.log(results)
-};
+import Exhibition from '../components/Exhibition'
+import '../css/Search.css'
 
 const extra = (
     <div>
@@ -49,10 +36,11 @@ const CardExample = () => (
 
   const SearchLayout = (message) => (
     <Container style={{ padding: '5em 0em', height: '720px'}}>
-      <Header textAlign="center" as='h2'>{message}</Header>
+      <h1 style={{fontSize: '3.5vw', color: "white", textAlign:"center", fontWeight:"initial", marginBottom: '1em'}}>{message}</h1>
       <Grid columns={2} style={{height: '100%'}}>
         <Grid.Column style={{height: '100%'}}>
-          <Map/>            
+          <Container style={{height: '100%'}}><Map/></Container>
+          
         </Grid.Column>
         <Grid.Column style={{height: '100%'}}>
           <Grid>
@@ -97,31 +85,76 @@ const CardExample = () => (
 
 class Search extends React.Component {
     state = {
-        searchResultMessage: "...을 검색한 결과입니다.",
-        searchList: "z"
+      isLoading: true,
+      keyword: "...을 검색한 결과입니다.",
+      exhibitions: []
     };
     
-    componentWillMount() {
-        // 서버로부터 받은 데이터를 가지고 setState
-        this.setState({
-            searchResultMessage: "강남역을 검색한 결과입니다.",
-            searchList: "asds"
-        })
+    getExhibitions = async () => {
+      const {
+          data: {
+            search
+          }
+      } = await axios.get('http://211.254.213.185:5000/searchapi');
+      console.log(search);
+      this.setState({exhibitions: search, isLoading: false})
     }
 
     async componentDidMount() {
-      {showResults()}
+      this.getExhibitions();
+      
+
+      // axios({
+      //   method:'get',
+      //   url : 'https://kt_map.gitlab.io/data/public_parking.json',
+      //   responseType: 'json',
+      // }).then(res => {
+      //   markerDisplay(res, map);
+      // }).catch(err => console.log(err));
     }
 
-    render() {
-        console.log(this.state.searchResultMessage)
-        return (
-            <div>
-                {SearchLayout(this.state.searchResultMessage)}
-            </div>
-            
-        );
+  render() {
+    const { isLoading, exhibitions } = this.state
+    return (
+      <section className="container">
+        {isLoading ? (
+          <div className="loader">
+            <span className="loader_text">Loading...</span>
+          </div>
+        ) : (
+          <div className="exhibitions">
+            {
+              exhibitions.map(exhibition => (
+                <Exhibition
+                  key={exhibition.id}
+                    id={exhibition.id}
+                    title={exhibition.title}
+                    place={exhibition.place}
+                    address={exhibition.address}
+                    date={exhibition.date}
+                    time={exhibition.time}
+                    price={exhibition.price}
+                    poster={exhibition.poster}
+                    />
+                ))}
+          </div>
+        )
+      }
+      </section>
+      )
     }
+
+
+
+    // render() {
+    //     console.log(this.state.searchResultMessage)
+    //     return (
+    //         <div>
+    //             {SearchLayout(this.state.keyword)}
+    //         </div>
+            
+    //     );
+    // }
 }
   
 export default Search;
