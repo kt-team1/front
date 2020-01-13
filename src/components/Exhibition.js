@@ -34,10 +34,9 @@ function Exhibition({id, title, place, address, date, time, price, poster, index
             alert(id)
           }}>
             <div style={{height: '100%', width: '100%', display: 'flex'}}>
-                <img src={poster} alt={title} title={title} 
-                style={{maxWidth: '50%', maxHeight: '100%', objectFit: 'cover'}}/>
-                <div className="exhibition_data" 
-                style={{width: '100%', padding: '20px'}}>
+
+                <img src={poster} alt={title} title={title} style={{width: '50%', height: '100%', objectFit: 'cover'}}/>
+                <div className="exhibition_data" style={{width: '50%', height: '100%', padding: '20px'}}>
                     <div style={{height: '50%'}}>
                      <h2 className="exhibition_title" 
                      style={{fontSize: '1vw'}}><strong>{title}</strong></h2>
