@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import Detail from '../components/Detail';
 
-class ExhibitionDetail extends Component {
+class exhibitionDetail extends Component {
     render() {
-        return (
-            <div class="exhibition_detail">
-                <p>This is ExhibitionDetail</p>
-            </div>
+        return(
+            <Detail/>
         );
     }
 }
 
-export default ExhibitionDetail;
+export default exhibitionDetail;
+

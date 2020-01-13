@@ -1,0 +1,22 @@
+div.exhibition_list {
+    width: 60vw;
+    margin: auto;
+    padding-top: 4vh;
+}
+
+div.info_bar {
+    height: 15vh;
+    padding-top: 3vh;
+    text-align: center;
+    text-shadow: 2px 2px 10px black;
+    color: white;
+}
+
+div.info_bar h1 {
+    line-height: 0.6;
+    font-size: 40px;
+}
+
+div.info_bar p {
+    font-size: 20px;
+}
