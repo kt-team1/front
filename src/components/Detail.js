@@ -105,6 +105,7 @@ class Detail extends Component {
                         fontSize: '200%',
                     }}>갤러리 이즈</p>
                     </div>
+                    
                     //4번째줄 div
                     <div style={{
                         width:'80%',

@@ -6,6 +6,8 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import './css/index.css';
 import 'semantic-ui-css/semantic.min.css';
+import 'react-app-polyfill/ie9';
+import 'react-app-polyfill/ie11';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
