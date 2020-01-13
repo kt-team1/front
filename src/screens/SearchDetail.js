@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import Detail from '../components/Detail';
+
 
 class SearchDetail extends Component {
     render() {
         return (
-            <div class="search_detail">
-                <p>This is SearchDetail</p>
-            </div>
+            <Detail/>
         );
     }
 }
