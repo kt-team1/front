@@ -41,6 +41,11 @@ class Home extends Component {
                     height:'100%',
                     backgroundColor: 'yellow'
                 }}>
+                    <div class="home">
+                        <div class="home_search_bar">
+                            <SearchBar />
+                        </div>          
+                    </div>          
                 </Grid.Column>
                 <Grid.Column celled='internally' width={12} style={{
                     height:'100%',
