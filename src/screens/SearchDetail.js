@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Button} from 'semantic-ui-react'
 import LinesEllipsis from 'react-lines-ellipsis'
 
-
 function App() {
     return (
       <img style = {{
@@ -157,4 +156,5 @@ class SearchDetail extends Component {
     }
 }
 
-export default SearchDetail;
+export default exhibitionDetail;
+
