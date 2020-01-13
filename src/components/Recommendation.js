@@ -4,7 +4,7 @@ import Album from './Album';
 class Recommendation extends Component {
     render() {
         return (
-            <div class="recommendation">
+            <div className="recommendation">
                 <h1>{this.props.title}</h1>
                 <Album space="10" count="4" list={[1, 2,3, 4]} />
             </div>
