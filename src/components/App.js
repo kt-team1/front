@@ -8,7 +8,6 @@ import SearchDetail from '../screens/SearchDetail';
 import ShowExhibition from '../screens/ShowExhibition';
 import Picture from '../screens/ShowPicDetail';
 import ExhibitionDetail from '../screens/ExhibitionDetail';
-import test from '../../public/test';
 
 
 class App extends Component {
