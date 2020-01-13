@@ -1,48 +1,38 @@
-<html>
+<HTML>
 
-<head>
-  <meta http-equiv="Content-Type" Content="text/html; charset=utf-8" />
-  <meta name="viewport" content="height=1080, width=1920, user-scalable=no" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <title>기가지니, 전시회를 부탁해!</title>
-  <script type="text/javascript"
-    src="https://gis.kt.com/maps/v3.0/sdk.js?key=642dd03a4712cef8bb36de4d06f8dd86565a738470cb4c697fa6cbcff6f8c65c6a66b0c4">
-    </script>
-</head>
-
-<script type="text/javascript" src="http://svcapi.gigagenie.ai/sdk/v1.0/js/gigagenie.js"></script>
-<script type="text/javascript">
-  var options = {};
-  // 서비스 초기화
-  function init() {
-    options = {};
-    options.keytype = "GBOXDEVM"; // 개발(GBOXDEVM) 또는 상용(GBOXCOMM) 키 종류 입력
-    options.apikey = "RTUwMDQwMTB8R0JPWERFVk18MTU3NzY5NjcwMjQxOQ=="; // 개발자 포털에서 키를 발급받아 입력
-
-    gigagenie.init(options, function (result_cd, result_msg, extra) {
-      if (result_cd === 200) {
-        //init 성공
-        console.log('Initialize Success');
-        //함수 호출 및 개발 진행
-      };
-    });
-  }
-
-  // 서비스 종료 명령 수신 API
-  gigagenie.voice.onRequestClose = function () {
-    options = {};
-    gigagenie.voice.svcFinished(options, function (result_cd, result_msg, extra) {
-    });
-  };
-</script>
-</head>
-
-<body onload=init()>
-  <div id="root"></div>
-</body>
-
-</html>
+  <HEAD>
+  
+  <TITLE>Your Title Here</TITLE>
+  
+  </HEAD>
+  
+  <BODY BGCOLOR="FFFFFF">
+  
+  <CENTER><IMG SRC="clouds.jpg" ALIGN="BOTTOM"> </CENTER>
+  
+  <HR>
+  
+  <a href="http://somegreatsite.com">Link Name</a>
+  
+  is a link to another nifty site
+  
+  <H1>This is a Header</H1>
+  
+  <H2>This is a Medium Header</H2>
+  
+  Send me mail at <a href="mailto:support@yourcompany.com">
+  
+  support@yourcompany.com</a>.
+  
+  <P> This is a new paragraph!
+  
+  <P> <B>This is a new paragraph!</B>
+  
+  <BR> <B><I>This is a new sentence without a paragraph break, in bold italics.</I></B>
+  
+  <HR>
+  
+  </BODY>
+  
+  
+  </HTML>
