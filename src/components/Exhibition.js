@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes, { func } from "prop-types";
-// import '../css/Exhibition.css'
+// import '../css/exhibition.css'
 import { Card, Image} from 'semantic-ui-react'
 
 const numberingWithIndex = (index) => {
@@ -29,26 +29,24 @@ const numberingWithIndex = (index) => {
 function Exhibition({id, title, place, address, date, time, price, poster, index}){
     console.log(index);
     return (
-        <Card style={{height:'215px'}} onClick={() => {
+
+        <Card class='exhibiton_card' style={{color: 'black', height:'100%', width: '100%'}} onClick={() => {
             alert(id)
           }}>
-            <Card.Content>
-                <Image
-                floated='right'
-                size='tiny'
-                src={poster}
-                alt={title}
-                title={title}
-                />
-                <Card.Header>{numberingWithIndex(index)}</Card.Header>
-                <Card.Meta><strong>{title}</strong></Card.Meta>
-                <Card.Description>
-                {place}
-                </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-                <Card.Meta>{date}</Card.Meta>
-            </Card.Content>
+            <div style={{height: '100%', width: '100%', display: 'flex'}}>
+                <img src={poster} alt={title} title={title} style={{width: '50%', height: '100%', objectFit: 'cover'}}/>
+                <div className="exhibition_data" style={{width: '50%', height: '100%', padding: '20px'}}>
+                    <div style={{height: '50%'}}>
+                     <h2 className="exhibition_title" style={{fontSize: '1vw'}}><strong>{title}</strong></h2>
+                    </div>
+                    <div style={{height: '30%', position: 'relative'}}>
+                     <h3 className="exhibition_year" style={{fontSize: '0.8vw', position: "absolute", bottom: '0'}}>{place}</h3>
+                    </div>
+                    <div style={{height: '20%', position: 'relative'}}>
+                      <p className="exhibition_summary" style={{fontSize: '0.7vw', position: "absolute", bottom: '0'}}>{date}</p>
+                    </div>
+                </div>
+            </div>                
         </Card>
     )
 }
@@ -63,7 +61,6 @@ Exhibition.prototype = {
     price: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     index: PropTypes.number
-    // genres: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default Exhibition;

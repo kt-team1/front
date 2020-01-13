@@ -81,7 +81,7 @@ class Search extends React.Component {
       <Grid style={{
         width: '100%',
         height: '100%',
-        padding: '50px',
+        padding: '50px 100px 50px 100px',
         margin: '0'
       }}>
         <Grid.Row style={{
@@ -103,8 +103,9 @@ class Search extends React.Component {
         <Grid.Row style={{
             height: '85%'
           }}>
-          <Grid.Column width={6} style={{
-            height: '100%'
+          <Grid.Column width={4} style={{
+            height: '80%',
+            padding: '50px 50px 0px 0px'
           }}>
             {/* 지도들어갈곳 */}
             <div className="map_container" style={{
@@ -116,7 +117,7 @@ class Search extends React.Component {
               </div>
             </div>
           </Grid.Column>
-          <Grid.Column celled='internally' width={10} style={{
+          <Grid.Column celled='internally' width={12} style={{
               height: '100%'
             }}>
             <Grid style={{
@@ -126,7 +127,9 @@ class Search extends React.Component {
               <Grid.Row columns={3} style={{
                 height: '50%'
               }}>
-                <Grid.Column>
+                <Grid.Column className="middle aligned" style={{
+                  height: '100%'
+                }}>
                   {
                     (currentExhibitions.length == 0)? <div></div> :
                     <Exhibition
@@ -143,7 +146,7 @@ class Search extends React.Component {
                     />                     
                   }
                 </Grid.Column>
-                <Grid.Column>
+                <Grid.Column className="middle aligned">
                   {
                     (currentExhibitions.length <= 1)? <div></div> :
                     <Exhibition
@@ -160,7 +163,7 @@ class Search extends React.Component {
                     />                     
                   }
                 </Grid.Column>
-                <Grid.Column>
+                <Grid.Column className="middle aligned">
                   {
                     (currentExhibitions.length <= 2)? <div></div> :
                     <Exhibition
@@ -181,7 +184,7 @@ class Search extends React.Component {
               <Grid.Row columns={3} style={{
                 height: '50%'
               }}>
-                <Grid.Column>
+                <Grid.Column className="middle aligned">
                   {
                     (currentExhibitions.length <= 3)? <div></div> :
                     <Exhibition
@@ -198,7 +201,7 @@ class Search extends React.Component {
                     />                     
                   }
                 </Grid.Column>
-                <Grid.Column>
+                <Grid.Column className="middle aligned">
                   {
                     (currentExhibitions.length <= 4)? <div></div> :
                     <Exhibition
@@ -215,7 +218,7 @@ class Search extends React.Component {
                     />                     
                   }
                 </Grid.Column>
-                <Grid.Column>
+                <Grid.Column className="middle aligned">
                   {
                     (currentExhibitions.length <= 5)? <div></div> :
                     <Exhibition
@@ -243,7 +246,7 @@ class Search extends React.Component {
                     {/* 버튼들 들어갈곳 */}
                     <div className="buttons">
                       {page == 0 ? (
-                        <Button disabled size="huge" labelPosition='left' icon='left chevron' content='Prev' onClick={() => {
+                        <Button disabled size="huge" labelPosition='left' icon='left chevron' content='이전' onClick={() => {
                           if (page>0) {
                             this.nextPaging(exhibitions, page-1);
                           } 
@@ -258,7 +261,7 @@ class Search extends React.Component {
                       <div style={{color: 'white'}}>
                         <h1 style={{marginTop: '1rem'}}>({page+1}/{maxPage+1})</h1>
                       </div>
-                      <Button size="huge" labelPosition='right' icon='right chevron' content='Next' onClick={() => {
+                      <Button size="huge" labelPosition='right' icon='right chevron' content='다음' onClick={() => {
                         if (page<maxPage) {
                           this.nextPaging(exhibitions, page+1);
                         } else {
