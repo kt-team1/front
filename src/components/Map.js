@@ -8,7 +8,7 @@ function markerDisplay(res, map){
         let point = latlngToUtmk(element.ycode, element.xcode)
         let marker = new window.olleh.maps.overlay.Marker({
           position: point,
-          caption: '공영주차장',
+          // caption: '공영주차장',
           map: map
         });
         // marker.setIcon('https://www.gunpopark.or.kr/images/main/about_icon.png');
