@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Button} from 'semantic-ui-react'
-import LinesEllipsis from 'react-lines-ellipsis'
+import {Button} from 'semantic-ui-react';
+// import LinesEllipsis from 'react-lines-ellipsis';
 
 
 function App() {
