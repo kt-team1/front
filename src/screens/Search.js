@@ -127,7 +127,9 @@ class Search extends React.Component {
               <Grid.Row columns={3} style={{
                 height: '50%'
               }}>
-                <Grid.Column className="middle aligned">
+                <Grid.Column className="middle aligned" style={{
+                  height: '100%'
+                }}>
                   {
                     (currentExhibitions.length == 0)? <div></div> :
                     <Exhibition
@@ -244,7 +246,7 @@ class Search extends React.Component {
                     {/* 버튼들 들어갈곳 */}
                     <div className="buttons">
                       {page == 0 ? (
-                        <Button disabled size="huge" labelPosition='left' icon='left chevron' content='Prev' onClick={() => {
+                        <Button disabled size="huge" labelPosition='left' icon='left chevron' content='이전' onClick={() => {
                           if (page>0) {
                             this.nextPaging(exhibitions, page-1);
                           } 
@@ -259,7 +261,7 @@ class Search extends React.Component {
                       <div style={{color: 'white'}}>
                         <h1 style={{marginTop: '1rem'}}>({page+1}/{maxPage+1})</h1>
                       </div>
-                      <Button size="huge" labelPosition='right' icon='right chevron' content='Next' onClick={() => {
+                      <Button size="huge" labelPosition='right' icon='right chevron' content='다음' onClick={() => {
                         if (page<maxPage) {
                           this.nextPaging(exhibitions, page+1);
                         } else {
