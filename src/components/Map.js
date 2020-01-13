@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios"
 
 //--- 하단은 gis 관련 코드입니다. ---
-function markerDisplay(res, map, clusterer, markerArr){
+function markerDisplay(res, map){
     res.data.DATA.some((element, idx) => {
       if(element.xcode && element.ycode){
         let point = latlngToUtmk(element.ycode, element.xcode)
@@ -16,8 +16,8 @@ function markerDisplay(res, map, clusterer, markerArr){
         marker.onEvent('click', function(e) {
           window.olleh.infoWindowShow(this)
         });
-        clusterer.add(marker);
-        markerArr.push(marker)
+        // clusterer.add(marker);
+        // markerArr.push(marker)
       }
     })
   }
@@ -42,7 +42,13 @@ function markerArrBound (arr, map){
 //--- 상단은 gis 관련 코드입니다. ---
 
 class Map extends Component {
-
+    state = {
+      isLoading: true,
+      currentExhibitions: []
+    };
+    mapZoomIn = () => {
+      console.log('zoomin')
+    }
     async componentDidMount() {
         var mapOpts = {
             center: new window.olleh.maps.UTMK(960823.7, 1945435.52),
@@ -52,16 +58,26 @@ class Map extends Component {
         var map = new window.olleh.maps.Map(document.getElementById("map_div",),
             mapOpts
         );
-        var markerArr = []
+        map.setZoom(6);
 
-        var clusterer = new window.olleh.maps.overlay.MarkerClusterer({
-          gap: 100,
-          afterCluster: function (cluster) {
-            cluster.onEvent('click', function(e){
-              alert(cluster.getAllMarkers().length);
-            });
-          }
-        });
+        // 마커들 한번에 보여주기 위한 코드
+        // var lb = new window.olleh.maps.LatLng(36.2886, 127.329); // 좌측 하단 좌표
+        // var rt = new window.olleh.maps.LatLng(36.3995, 127.468); // 우측 상단 좌표
+        // var bounds = new window.olleh.maps.Bounds(lb, rt);
+        // map.panToBounds(bounds);
+
+        
+
+        // var markerArr = []
+
+        // var clusterer = new window.olleh.maps.overlay.MarkerClusterer({
+        //   gap: 100,
+        //   afterCluster: function (cluster) {
+        //     cluster.onEvent('click', function(e){
+        //       alert(cluster.getAllMarkers().length);
+        //     });
+        //   }
+        // });
 
         // for (var i = 0; i < 1000; i++) {
         //   var marker = new window.olleh.maps.overlay.Marker({
@@ -79,11 +95,11 @@ class Map extends Component {
             url : 'https://kt_map.gitlab.io/data/public_parking.json',
             responseType: 'json',
           }).then(res => {
-            markerDisplay(res, map, clusterer, markerArr);
+            markerDisplay(res, map);
           }).catch(err => console.log(err));
           
-         clusterer.setMap(map);
-         markerArrBound(markerArr, map)
+        //  clusterer.setMap(map);
+        //  markerArrBound(markerArr, map)
     }
 
     render() {

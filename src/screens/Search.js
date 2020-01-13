@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Map from '../components/Map';
+import Map from '../components/Map'
 import axios from "axios"
 import Exhibition from '../components/Exhibition'
 import '../css/Search.css'
-import { Grid, Button } from 'semantic-ui-react'
+import { Grid, Button, Form } from 'semantic-ui-react'
 
 const getMap = () => (
   <div>
@@ -43,8 +43,11 @@ class Search extends React.Component {
             search
           }
       } = await axios.get('http://211.254.213.185:5000/searchapi');
+      // const result = await axios.get('http://211.254.213.185:5000/searchapi');
+      // console.log(result);
       const pagedExhibitions = pagingExhibitions(search, 0);
       const maxPage = parseInt(search.length/6);
+      console.log(search);
       this.setState({exhibitions: search, currentExhibitions:pagedExhibitions, maxPage: maxPage, isLoading: false})
     }
 
@@ -76,12 +79,12 @@ class Search extends React.Component {
 
   render() {
     const { isLoading, exhibitions, page, maxPage, currentExhibitions } = this.state
-    console.log(page);
+    console.log("render()");
     return (
       <Grid style={{
         width: '100%',
         height: '100%',
-        padding: '50px 100px 50px 100px',
+        padding: '54px 96px 54px 96px',
         margin: '0'
       }}>
         <Grid.Row style={{
@@ -267,6 +270,7 @@ class Search extends React.Component {
                         } else {
                           this.nextPaging(exhibitions, 0);
                         }
+                        console.log("test");
                       }}/>
                     </div>
                   </Grid.Column>
