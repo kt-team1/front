@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios"
 
 //--- 하단은 gis 관련 코드입니다. ---
-function markerDisplay(res, map){
+function markerDisplay(res, map, clusterer, markerArr){
     res.data.DATA.some((element, idx) => {
       if(element.xcode && element.ycode){
         let point = latlngToUtmk(element.ycode, element.xcode)
@@ -16,6 +16,8 @@ function markerDisplay(res, map){
         marker.onEvent('click', function(e) {
           window.olleh.infoWindowShow(this)
         });
+        clusterer.add(marker);
+        markerArr.push(marker)
       }
     })
   }
@@ -23,6 +25,19 @@ function markerDisplay(res, map){
 function latlngToUtmk(x, y){ 
     let p = window.olleh.maps.UTMK.valueOf(new window.olleh.maps.LatLng(x, y))
     return p
+}
+
+function markerArrBound (arr, map){
+  let minX = 9999999, minY = 9999999, maxX = -9999999, maxY = -9999999;
+  arr.some((markerEle, idx) => {
+    let p = markerEle.getPosition()
+    p.x<minX ? minX=p.x : minX=minX
+    p.y<minY ? minY=p.y : minY=minY
+    p.x>maxX ? maxX=p.x : maxX=maxX
+    p.y>maxY ? maxY=p.y : maxY=maxY
+  })
+  var bound = new window.olleh.maps.Bounds(new window.olleh.maps.UTMK(minX, minY), new window.olleh.maps.UTMK(maxX, maxY))
+  map.fitBounds(bound);
 }
 //--- 상단은 gis 관련 코드입니다. ---
 
@@ -37,14 +52,38 @@ class Map extends Component {
         var map = new window.olleh.maps.Map(document.getElementById("map_div",),
             mapOpts
         );
+        var markerArr = []
+
+        var clusterer = new window.olleh.maps.overlay.MarkerClusterer({
+          gap: 100,
+          afterCluster: function (cluster) {
+            cluster.onEvent('click', function(e){
+              alert(cluster.getAllMarkers().length);
+            });
+          }
+        });
+
+        // for (var i = 0; i < 1000; i++) {
+        //   var marker = new window.olleh.maps.overlay.Marker({
+        //     position: new window.olleh.maps.UTMK(
+        //       960823.7 + Math.random() * 4000, 
+        //       1945435.52 + Math.random() * 3000)
+        //   });
+        //   clusterer.add(marker);
+        //    markerArr.push(marker)
+        //  }
+
 
         axios({
             method:'get',
             url : 'https://kt_map.gitlab.io/data/public_parking.json',
             responseType: 'json',
           }).then(res => {
-            markerDisplay(res, map);
+            markerDisplay(res, map, clusterer, markerArr);
           }).catch(err => console.log(err));
+          
+         clusterer.setMap(map);
+         markerArrBound(markerArr, map)
     }
 
     render() {
