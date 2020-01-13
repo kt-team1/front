@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import {Button} from 'semantic-ui-react';
 // import LinesEllipsis from 'react-lines-ellipsis';
-=======
-import {Button} from 'semantic-ui-react'
-import LinesEllipsis from 'react-lines-ellipsis'
->>>>>>> 82f703d46ba2fed3f3613adb9b123b5fe9c09972
 
 
 function App() {
