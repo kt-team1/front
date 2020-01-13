@@ -31,7 +31,6 @@ class Home extends Component {
     render() {
         const { isLoading, exhibitions } = this.state
         return (
-<<<<<<< HEAD
             <Grid style={{
                 width: '100%',
                 height: '100%',
@@ -42,11 +41,6 @@ class Home extends Component {
                     height:'100%',
                     backgroundColor: 'yellow'
                 }}>
-=======
-            <div className="home">
-                <div className="home_search_bar">
->>>>>>> 27ea926fb77785a4fbf94d4466fd4cc9a82b3b7d
-                    <SearchBar />
                 </Grid.Column>
                 <Grid.Column celled='internally' width={12} style={{
                     height:'100%',
@@ -113,19 +107,6 @@ class Home extends Component {
                     </Grid>
                 </Grid.Column>
             </Grid>
-
-
-
-
-<<<<<<< HEAD
-=======
-                <div className="home_lists">
-                        <Recommendation title="추천 전시" />
-                        <Recommendation title="기가지니 온라인 전시" />
-                </div>
->>>>>>> 27ea926fb77785a4fbf94d4466fd4cc9a82b3b7d
-
-
 
             // <div class="home">
             //     <div class="home_search_bar">
