@@ -252,7 +252,7 @@ class Search extends React.Component {
                           } 
                         }}/>
                       ) : (
-                        <Button size="huge" labelPosition='left' icon='left chevron' content='Prev' onClick={() => {
+                        <Button size="huge" labelPosition='left' icon='left chevron' content='이전' onClick={() => {
                           if (page>0) {
                             this.nextPaging(exhibitions, page-1);
                           } 
