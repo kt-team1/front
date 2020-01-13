@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import {Button} from 'semantic-ui-react';
 // import LinesEllipsis from 'react-lines-ellipsis';
+=======
+import {Button} from 'semantic-ui-react'
+import LinesEllipsis from 'react-lines-ellipsis'
+>>>>>>> 82f703d46ba2fed3f3613adb9b123b5fe9c09972
 
 
 function App() {
@@ -43,7 +48,11 @@ function App() {
 class ShowPicDetail extends Component {
     render() {
         return (
+<<<<<<< HEAD
             <div className="show_exhibition">
+=======
+            <div className="show_picdetail">
+>>>>>>> 82f703d46ba2fed3f3613adb9b123b5fe9c09972
                 <img src={require('../resources/andy/andy-6.jpg')}
                 width="100%" height="100%"></img>
             </div>
