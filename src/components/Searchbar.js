@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class SearchBar extends Component {
     render() {
         return (
-            <div class="search_bar">
+            <div className="search_bar">
                 <h1>기가지니</h1>
                 <h2>인기 있는 전시 검색해줘</h2>
                 <h4>기가지니와 함께 떠나는 문화 여행</h4>
