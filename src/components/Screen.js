@@ -21,6 +21,7 @@ class Screen extends Component {
     };
 
     render() {
+        console.log(this.props.theme);
         if (this.state.id === 1) {
             this.state.data = this.props.theme;
             this.state.source = this.state.data[0].source;

@@ -97,23 +97,18 @@ class OnlineExhibition extends React.Component {
                 }}>
                   {
                     (currentExhibitions.length == 0) ? <div></div> :
-                      <Link to={{
-                        pathname: '/exhibition/' + currentExhibitions[0].exhibit_id,
-                        state: {
-                          id: currentExhibitions[0].exhibit_id }
-                      }}
-                      ><Exhibition
-                          key={currentExhibitions[0].exhibit_id}
-                          id={currentExhibitions[0].exhibit_id}
-                          title={currentExhibitions[0].title}
-                          place={currentExhibitions[0].place}
-                          address={currentExhibitions[0].address}
-                          date={currentExhibitions[0].date}
-                          time={currentExhibitions[0].time}
-                          price={currentExhibitions[0].price}
-                          poster={currentExhibitions[0].poster}
-                          index={0}
-                        /></Link>
+                      <Exhibition
+                        key={currentExhibitions[0].exhibit_id}
+                        id={currentExhibitions[0].exhibit_id}
+                        title={currentExhibitions[0].title}
+                        place={currentExhibitions[0].place}
+                        address={currentExhibitions[0].address}
+                        date={currentExhibitions[0].date}
+                        time={currentExhibitions[0].time}
+                        price={currentExhibitions[0].price}
+                        poster={currentExhibitions[0].poster}
+                        index={0}
+                      />
                   }
                 </Grid.Column>
                 <Grid.Column className="middle aligned">
