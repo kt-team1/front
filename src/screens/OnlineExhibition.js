@@ -37,6 +37,7 @@ class OnlineExhibition extends React.Component {
             search
           }
       } = await axios.get('http://211.254.213.185:5000/searchapi');
+      console.log(search);
       const pagedExhibitions = pagingExhibitions(search, 0);
       const maxPage = parseInt(search.length/8);
       this.setState({exhibitions: search, currentExhibitions:pagedExhibitions, maxPage: maxPage, isLoading: false})

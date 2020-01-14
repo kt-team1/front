@@ -41,11 +41,20 @@ function App() {
   }
 
 class ShowPicDetail extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            id: null,
+            img: require('../resources/vangogh/vangogh (1).jpg')
+        }
+    }
+
     render() {
         return (
             <div className="show_picdetail">
 
-                <img src={require('../resources/andy/andy-6.jpg')}
+                <img src={this.state.img}
                 width="100%" height="100%"></img>
             </div>
         );
