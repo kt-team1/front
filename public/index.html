@@ -45,23 +45,7 @@
               options.ttstext=extra.voicetext;
               gigagenie.voice.sendTTS(options,function(result_cd,result_msg,extra){
                   if(result_cd===200){
-                      //do next action
-                      var myHeaders = new Headers();
-                      myHeaders.append("Content-Type", "application/json");
-
-                      var raw = JSON.stringify({"text":"지니"});
-
-                      var requestOptions = {
-                        method: 'POST',
-                        headers: myHeaders,
-                        body: raw,
-                        redirect: 'follow'
-                      };
-
-                      fetch("http://211.254.213.185:5000/text", requestOptions)
-                        .then(response => response.text())
-                        .then(result => console.log(result))
-                        .catch(error => console.log('error', error));
+                      //do next actio
                   } else {
                       //extra.reason 에 voice 오류 전달.
                   };
