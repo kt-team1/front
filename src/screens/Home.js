@@ -19,11 +19,14 @@ class Home extends Component {
     getExhibitions = async () => {
 
         const data = await axios.get('http://211.254.213.185:5000/');
-        console.log(data);
-        const recommend = data.data.recommend;
-        const onlineexh = data.data.isonline;
-        console.log(recommend);
-        this.setState({ currentExhibitions: recommend, isLoading: false })
+        const data2 = await axios.get('http://211.254.213.185:5000/home');
+        // console.log(data);
+        // console.log(data2);
+        const recommend = data.data.data;
+        const onlineexh = data2.data.data;
+        // console.log(recommend);
+        // console.log(onlineexh);
+        this.setState({ currentExhibitions: recommend, online: onlineexh, isLoading: false })
     }
 
     async componentDidMount() {
@@ -31,7 +34,7 @@ class Home extends Component {
     }
 
     render() {
-        const { isLoading, exhibitions, page, maxPage, currentExhibitions, map } = this.state;
+        const { isLoading, exhibitions, page, maxPage, currentExhibitions, map, online } = this.state;
         var randnum = [0, 1, 2, 3];
         // for (var i = 0; i < 4; i++) {
         //     var temp = Math.floor(Math.random() * 47);
@@ -45,6 +48,7 @@ class Home extends Component {
         // }
         // console.log(randnum);
         console.log("render start");
+        // console.log(currentExhibitions);
 
         return (
             <div class="home">
@@ -83,7 +87,7 @@ class Home extends Component {
                             marginBottom: '5%',
                         }}>
                             <Grid.Column>{
-                                (currentExhibitions.length == 0) ? <div></div> :
+                                (currentExhibitions.length === 0) ? <div></div> :
                                     <HomeExhibition
                                         key={currentExhibitions[randnum[0]].exhibit_id}
                                         id={currentExhibitions[randnum[0]].exhibit_id}
@@ -98,7 +102,7 @@ class Home extends Component {
                                     />
                             }</Grid.Column>
                             <Grid.Column>{
-                                (currentExhibitions.length == 0) ? <div></div> :
+                                (currentExhibitions.length === 0) ? <div></div> :
                                     <HomeExhibition
                                         key={currentExhibitions[randnum[1]].exhibit_id}
                                         id={currentExhibitions[randnum[1]].exhibit_id}
@@ -114,7 +118,7 @@ class Home extends Component {
 
                             }</Grid.Column>
                             <Grid.Column>{
-                                (currentExhibitions.length == 0) ? <div></div> :
+                                (currentExhibitions.length === 0) ? <div></div> :
 
                                     <HomeExhibition
                                         key={currentExhibitions[randnum[2]].exhibit_id}
@@ -131,7 +135,7 @@ class Home extends Component {
 
                             }</Grid.Column>
                             <Grid.Column>{
-                                (currentExhibitions.length == 0) ? <div></div> :
+                                (currentExhibitions.length === 0) ? <div></div> :
 
                                     <HomeExhibition
                                         key={currentExhibitions[randnum[3]].exhibit_id}
@@ -169,7 +173,7 @@ class Home extends Component {
                             height: '40%'
                         }}>
                             <Grid.Column>{
-                                (HomeExhibition.length == 0) ? <div></div> :
+                                (HomeExhibition.length === 0) ? <div></div> :
 
                                     <HomeExhibition
                                         key='1000'
@@ -186,7 +190,7 @@ class Home extends Component {
 
                             }</Grid.Column>
                             {/* <Grid.Column>{
-                                (currentExhibitions.length == 0) ? <div></div> :
+                                (currentExhibitions.length === 0) ? <div></div> :
 
                                     <HomeExhibition
                                         key='1001'
@@ -205,7 +209,7 @@ class Home extends Component {
 
                             }</Grid.Column>
                             <Grid.Column>{
-                                (currentExhibitions.length == 0) ? <div></div> :
+                                (currentExhibitions.length === 0) ? <div></div> :
 
                                     <HomeExhibition
                                         key={currentExhibitions[5].exhibit_id}
@@ -223,7 +227,7 @@ class Home extends Component {
 
                             }</Grid.Column>
                             <Grid.Column>{
-                                (currentExhibitions.length == 0) ? <div></div> :
+                                (currentExhibitions.length === 0) ? <div></div> :
 
                                     <HomeExhibition
                                         key={currentExhibitions[6].exhibit_id}
