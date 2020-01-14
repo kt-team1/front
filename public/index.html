@@ -6,7 +6,7 @@
   <meta name="viewport" content="height=1080, width=1920, user-scalable=no" />
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
   <meta name="theme-color" content="#000000" />
- 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <meta name="description" content="Web site created using create-react-app" />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
@@ -37,13 +37,29 @@
         gigagenie.voice.getVoiceText(options,function(result_cd,result_msg,extra){
             if(result_cd===200){
                 console.log("Received Text is "+extra.voicetext);
+                $.ajax({
+                  url:"http://211.254.213.185:5000/text",
+                  type:"POST",
+                  data:extra.voicetext, 
+                  contentType:  "application/x-www-form-urlencoded; charset=UTF-8",
+                  success: function(result) {
+                      if (result) {
+                          alert({voicetext});
+                      } else {
+                          alert({voicetext});
+                      }
+                  },
+                  error: function() {
+                      alert("에러 발생");
+                  }
+                }) 
             };
         });
         console.log('Initialize Success');
         //함수 호출 및 개발 진행
       };
     });
-
+    
   // 서비스 종료 명령 수신 API
   gigagenie.voice.onRequestClose = function () {
     options = {};
