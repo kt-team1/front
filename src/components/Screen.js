@@ -43,7 +43,7 @@ class Screen extends Component {
                             });
                         } catch {
                             alert("전시 관람이 종료되었습니다. \n기가지니 온라인 전시 화면으로 돌아갑니다.");
-                            window.location = '/exhibition';
+                            window.location = '/';
                         }
                     }.bind(this)} />
                 <img id="back" src={require('../resources/back.png')}
