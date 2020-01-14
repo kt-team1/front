@@ -14,7 +14,7 @@ class Home extends Component {
         keyword: "...을 검색한 결과입니다.",
         exhibitions: []
     };
-
+    
     getExhibitions = async () => {
         const {
             data: {
@@ -33,8 +33,13 @@ class Home extends Component {
 
     render() {
         const { isLoading, exhibitions } = this.state
+        console.log("render start");
         return (
             <div class="home">
+                <script type="text/javascript" src="http://svcapi.gigagenie.ai/sdk/v1.0/js/gigagenie.js"></script>
+                <div>
+                    <init/>
+                </div>
                 <Grid style={{
                     width: '100%',
                     height: '100%',
