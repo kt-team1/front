@@ -2,13 +2,8 @@ import React from "react";
 import PropTypes, { func } from "prop-types";
 // import '../css/exhibition.css'
 import { Card, Image} from 'semantic-ui-react'
-<<<<<<< HEAD
-
-// import { Link, Router, Route, browserHistory, IndexRoute } from 'react-router-dom';
-
-=======
 import { Link } from 'react-router-dom';
->>>>>>> 0fa655e7874ece62abc5c92c427968565520e5f2
+
 
 const numberingWithIndex = (index) => {
     switch (index) {
