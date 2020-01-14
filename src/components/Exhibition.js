@@ -2,9 +2,13 @@ import React from "react";
 import PropTypes, { func } from "prop-types";
 // import '../css/exhibition.css'
 import { Card, Image} from 'semantic-ui-react'
+<<<<<<< HEAD
 
 // import { Link, Router, Route, browserHistory, IndexRoute } from 'react-router-dom';
 
+=======
+import { Link } from 'react-router-dom';
+>>>>>>> 0fa655e7874ece62abc5c92c427968565520e5f2
 
 const numberingWithIndex = (index) => {
     switch (index) {
@@ -33,24 +37,34 @@ function Exhibition({id, title, place, address, date, time, price, poster, index
     return (
         <Card class='exhibiton_card' style={{color: 'black', height:'100%', 
         width: '100%'}}>
-            <div style={{height: '100%', width: '100%', display: 'flex'}}>
-
+            <div style={{height: '100%', width: '100%'}}>
+                <Link
+                    to={{
+                    pathname: `/search/${id}`,
+                    state: {
+                        title,
+                        place,
+                        address,
+                        date,
+                        poster
+                    }
+                }} style={{height: '100%', width: '100%', display: 'flex'}}>
                 <img src={poster} alt={title} title={title} style={{width: '50%', height: '100%', objectFit: 'cover'}}/>
                 <div className="exhibition_data" style={{width: '50%', height: '100%', padding: '20px'}}>
                     <div style={{height: '50%'}}>
-                    <h2 className="exhibition_title" 
-                     style={{fontSize: '1vw'}}><strong>{title}</strong></h2>
+                        <h2 className="exhibiton_title" style={{color: "black"}}>{title}</h2>      
                     </div>
                     <div style={{height: '30%', position: 'relative'}}>
-                     <h3 className="exhibition_year" 
-                     style={{fontSize: '0.8vw', position: "absolute", bottom: '0'}}>{place}</h3>
+                        <h3 className="exhibition_year" 
+                        style={{fontSize: '0.8vw', position: "absolute", bottom: '0'}}>{place}</h3>
                     </div>
                     <div style={{height: '20%', position: 'relative'}}>
-                      <p className="exhibition_summary" 
-                      style={{fontSize: '0.7vw', position: "absolute", bottom: '0'}}>{date}</p>
+                        <p className="exhibition_summary" 
+                        style={{fontSize: '0.7vw', position: "absolute", bottom: '0'}}>{date}</p>
                     </div>
                 </div>
-            </div>                
+                </Link> 
+            </div>
         </Card>
     )
 }
