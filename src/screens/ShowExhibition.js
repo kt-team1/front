@@ -132,7 +132,7 @@ class ShowExhibition extends Component {
     render() {
         return (
             <div className="show_exhibition">
-                <Screen key={exhibit[0].id} theme={exhibit} />
+                <Screen key={exhibit.id} theme={exhibit} />
             </div>
         );
     }
