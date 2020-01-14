@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../css/showExhibition.css';
 import Screen from '../components/Screen';
 
-const exhibit = [
+let exhibit = [
     {
         id: 1, source: require("../resources/exhibit/exhibit (1).jpg"),
         right: false, img: null

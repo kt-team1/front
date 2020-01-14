@@ -3,7 +3,7 @@ import PropTypes, { func } from "prop-types";
 // import '../css/exhibition.css'
 import { Card, Image} from 'semantic-ui-react'
 
-import { Link, Router, Route, browserHistory, IndexRoute } from 'react-router-dom';
+// import { Link, Router, Route, browserHistory, IndexRoute } from 'react-router-dom';
 
 
 const numberingWithIndex = (index) => {
@@ -38,8 +38,8 @@ function Exhibition({id, title, place, address, date, time, price, poster, index
                 <img src={poster} alt={title} title={title} style={{width: '50%', height: '100%', objectFit: 'cover'}}/>
                 <div className="exhibition_data" style={{width: '50%', height: '100%', padding: '20px'}}>
                     <div style={{height: '50%'}}>
-                    <Link to="/exhibition/detail"><h2 className="exhibition_title" 
-                     style={{fontSize: '1vw'}}><strong>{title}</strong></h2></Link>
+                    <h2 className="exhibition_title" 
+                     style={{fontSize: '1vw'}}><strong>{title}</strong></h2>
                     </div>
                     <div style={{height: '30%', position: 'relative'}}>
                      <h3 className="exhibition_year" 
