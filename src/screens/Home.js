@@ -20,6 +20,7 @@ class Home extends Component {
             data: {
                 data
             }
+
         } = await axios.get('http://211.254.213.185:5000/search/place');
         this.setState({ exhibitions: data, isLoading: false })
         console.log(data);
@@ -28,6 +29,7 @@ class Home extends Component {
     async componentDidMount() {
         this.getExhibitions();
     }
+    
 
     render() {
         const { isLoading, exhibitions } = this.state
@@ -69,6 +71,7 @@ class Home extends Component {
                         }}>
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
+
                                     <Link to="/exhibition/detail">
                                         <Exhibition
                                             key={exhibitions[0].exhibit_id}
@@ -134,6 +137,7 @@ class Home extends Component {
                                             index={3}
                                         />
                                     </Link>
+
                             }</Grid.Column>
                         </Grid>
                         <Grid style={{
