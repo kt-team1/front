@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {Grid, Button} from 'semantic-ui-react';
 
-const SearchDetail = (props) => {
+class SearchDetail extends Component {
+    render() {
     const { data } = this.props.location
     console.log(data)
     return (
@@ -165,6 +166,7 @@ const SearchDetail = (props) => {
             </Grid.Column>
         </Grid>
     );
+}
 }
 
 

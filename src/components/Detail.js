@@ -55,7 +55,6 @@ class Detail extends Component {
                 }}>
                     <App />
                 </div>
-                //오른쪽 부분
                 <div style={{
                     float:"left",
                     width:'45%',
