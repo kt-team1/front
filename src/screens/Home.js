@@ -26,6 +26,7 @@ class Home extends Component {
     async componentDidMount() {
         this.getExhibitions();
     }
+    
 
     render() {
         const { isLoading, exhibitions } = this.state
