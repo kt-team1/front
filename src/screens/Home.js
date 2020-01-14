@@ -15,7 +15,7 @@ class Home extends Component {
         exhibitions: [],
         currentExhibitions: [],
     };
-    
+
     getExhibitions = async () => {
         const {
             data: {
@@ -30,13 +30,18 @@ class Home extends Component {
         this.getExhibitions();
     }
 
-
     render() {
         const { isLoading, exhibitions, page, maxPage, currentExhibitions, map } = this.state;
         var randnum = []
         for (var i = 0; i < 4; i++) {
             var temp = Math.floor(Math.random() * 47);
-            randnum.push(temp);
+            // console.log(randnum.find((e) => (e === temp)));
+            if (randnum.find((e) => (e === temp))) {
+                i--;
+            } else {
+                randnum.push(temp);
+            }
+            
         }
         // console.log(randnum);
         console.log("render start");
