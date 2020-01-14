@@ -22,7 +22,7 @@ class Home extends Component {
                 data
             }
 
-        } = await axios.get('http://211.254.213.185:5000/search/place');
+        } = await axios.get('http://211.254.213.185:5000/');
         this.setState({ currentExhibitions: data, isLoading: false })
     }
 
