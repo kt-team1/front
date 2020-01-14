@@ -36,10 +36,6 @@ class Home extends Component {
         console.log("render start");
         return (
             <div class="home">
-                <script type="text/javascript" src="http://svcapi.gigagenie.ai/sdk/v1.0/js/gigagenie.js"></script>
-                <div>
-                    <init/>
-                </div>
                 <Grid style={{
                     width: '100%',
                     height: '100%',
