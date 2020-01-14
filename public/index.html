@@ -30,13 +30,15 @@
       console.log('Initialize Start');
       if (result_cd === 200) {
         //init 성공
-
-        gigagenie.voice.onActionEvent=function(extra){
-        switch(extra.actioncode){
-          case '1_SEARCH':
-              //QueryHello 처리
+        
+        //callback 방식으로, TTS로 재생한 후 음성 인식을 할 경우
+        var options={};
+        options.mode = 0
+        options.voicemsg="기가지니, 전시회 서비스를 시작합니다."
+        gigagenie.voice.getVoiceText(options,function(result_cd,result_msg,extra){
+            if(result_cd===200){
               var options={};
-              options.ttstext="안녕기가지니[P2]일반숫자[P2]1234[P2]끊어읽기[DS]1234[/DS]";
+              options.ttstext=extra.voicetext;
               gigagenie.voice.sendTTS(options,function(result_cd,result_msg,extra){
                   if(result_cd===200){
                       //do next action
@@ -44,13 +46,9 @@
                       //extra.reason 에 voice 오류 전달.
                   };
               });
-              break;
-          case '1_SELECT':
-              //QUeryWorld 처리
-              break;
-          default:s
-              break;
-        }};
+                console.log("Received Text is "+extra.voicetext);
+            };
+        });
 
         console.log('Initialize Success');
         //함수 호출 및 개발 진행
