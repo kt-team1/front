@@ -27,7 +27,7 @@ class Home extends Component {
     }
 
     async componentDidMount() {
-        // this.getExhibitions();
+         this.getExhibitions();
     }
 
     render() {
