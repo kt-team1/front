@@ -17,6 +17,7 @@ class Home extends Component {
     };
 
     getExhibitions = async () => {
+
         const data = await axios.get('http://211.254.213.185:5000/');
         console.log(data);
         const recommend = data.data.recommend;
