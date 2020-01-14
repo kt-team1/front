@@ -179,17 +179,7 @@ class SearchDetail extends React.Component {
                                     window.location = '/exhibition/detail/main';
                                 }}/>
                             </div>
-// =======
-//                         <Button size="huge" labelPosition='left' icon='left chevron' content='뒤로가기' style={{
-//           backgroundColor:'pink',
-//           }} onClick={() => {
-//                             console.log("뒤로가기");
-//                         }}/>
-//                         <Link to="/exhibition/detail/main"><Button size="huge" content='온라인전시'style={{
-//           backgroundColor:'pink',
-//           }}/></Link>
-//                     </div>
-// >>>>>>> master
+
                         </Grid.Row>
                     </Grid.Column>
                 </Grid>
@@ -198,8 +188,6 @@ class SearchDetail extends React.Component {
             return null;
         }
     }
-    
 }
-
 
 export default SearchDetail;
