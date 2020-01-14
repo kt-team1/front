@@ -28,7 +28,7 @@ const numberingWithIndex = (index) => {
     }
 }
 
-function Exhibition({id, title, place, address, date, time, price, poster, index, x, y}){
+function Exhibition({type, id, title, place, address, date, time, price, poster, index, x, y, desc}){
     return (
         <Card class='exhibiton_card' style={{color: 'black', height:'100%', 
         width: '100%'}}>
@@ -41,7 +41,9 @@ function Exhibition({id, title, place, address, date, time, price, poster, index
                         place,
                         address,
                         date,
-                        poster
+                        poster, 
+                        desc,
+                        type
                     }
                 }} style={{height: '100%', width: '100%', display: 'flex'}}>
                 <img src={poster} alt={title} title={title} style={{width: '50%', height: '100%', objectFit: 'cover'}}/>

@@ -23,7 +23,7 @@ class Home extends Component {
 
         } = await axios.get('http://211.254.213.185:5000/search/place');
         this.setState({ exhibitions: data, isLoading: false })
-        console.log(data);
+        // console.log(data); // 47
     }
 
     async componentDidMount() {
@@ -32,8 +32,16 @@ class Home extends Component {
 
 
     render() {
-        const { isLoading, exhibitions } = this.state
+
+        const { isLoading, exhibitions } = this.state;
+        var randnum = []
+        for (var i = 0; i < 4; i++) {
+            var temp = Math.floor(Math.random() * 47);
+            randnum.push(temp);
+        }
+        // console.log(randnum);
         console.log("render start");
+
         return (
             <div class="home">
                 <Grid style={{
@@ -73,30 +81,30 @@ class Home extends Component {
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
                                     <Exhibition
-                                        key={exhibitions[0].exhibit_id}
-                                        id={exhibitions[0].exhibit_id}
-                                        title={exhibitions[0].title}
-                                        place={exhibitions[0].place}
-                                        address={exhibitions[0].address}
-                                        date={exhibitions[0].date}
-                                        time={exhibitions[0].time}
-                                        price={exhibitions[0].price}
-                                        poster={exhibitions[0].poster}
+                                        key={exhibitions[randnum[0]].exhibit_id}
+                                        id={exhibitions[randnum[0]].exhibit_id}
+                                        title={exhibitions[randnum[0]].title}
+                                        place={exhibitions[randnum[0]].place}
+                                        address={exhibitions[randnum[0]].address}
+                                        date={exhibitions[randnum[0]].date}
+                                        time={exhibitions[randnum[0]].time}
+                                        price={exhibitions[randnum[0]].price}
+                                        poster={exhibitions[randnum[0]].poster}
                                         index={0}
                                     />
                             }</Grid.Column>
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
                                     <Exhibition
-                                        key={exhibitions[1].exhibit_id}
-                                        id={exhibitions[1].exhibit_id}
-                                        title={exhibitions[1].title}
-                                        place={exhibitions[1].place}
-                                        address={exhibitions[1].address}
-                                        date={exhibitions[1].date}
-                                        time={exhibitions[1].time}
-                                        price={exhibitions[1].price}
-                                        poster={exhibitions[1].poster}
+                                        key={exhibitions[randnum[1]].exhibit_id}
+                                        id={exhibitions[randnum[1]].exhibit_id}
+                                        title={exhibitions[randnum[1]].title}
+                                        place={exhibitions[randnum[1]].place}
+                                        address={exhibitions[randnum[1]].address}
+                                        date={exhibitions[randnum[1]].date}
+                                        time={exhibitions[randnum[1]].time}
+                                        price={exhibitions[randnum[1]].price}
+                                        poster={exhibitions[randnum[1]].poster}
                                         index={1}
                                     />
 
@@ -105,15 +113,15 @@ class Home extends Component {
                                 (exhibitions.length == 0) ? <div></div> :
 
                                     <Exhibition
-                                        key={exhibitions[2].exhibit_id}
-                                        id={exhibitions[2].exhibit_id}
-                                        title={exhibitions[2].title}
-                                        place={exhibitions[2].place}
-                                        address={exhibitions[2].address}
-                                        date={exhibitions[2].date}
-                                        time={exhibitions[2].time}
-                                        price={exhibitions[2].price}
-                                        poster={exhibitions[2].poster}
+                                        key={exhibitions[randnum[2]].exhibit_id}
+                                        id={exhibitions[randnum[2]].exhibit_id}
+                                        title={exhibitions[randnum[2]].title}
+                                        place={exhibitions[randnum[2]].place}
+                                        address={exhibitions[randnum[2]].address}
+                                        date={exhibitions[randnum[2]].date}
+                                        time={exhibitions[randnum[2]].time}
+                                        price={exhibitions[randnum[2]].price}
+                                        poster={exhibitions[randnum[2]].poster}
                                         index={2}
                                     />
 
@@ -122,15 +130,15 @@ class Home extends Component {
                                 (exhibitions.length == 0) ? <div></div> :
 
                                     <Exhibition
-                                        key={exhibitions[3].exhibit_id}
-                                        id={exhibitions[3].exhibit_id}
-                                        title={exhibitions[3].title}
-                                        place={exhibitions[3].place}
-                                        address={exhibitions[3].address}
-                                        date={exhibitions[3].date}
-                                        time={exhibitions[3].time}
-                                        price={exhibitions[3].price}
-                                        poster={exhibitions[3].poster}
+                                        key={exhibitions[randnum[3]].exhibit_id}
+                                        id={exhibitions[randnum[3]].exhibit_id}
+                                        title={exhibitions[randnum[3]].title}
+                                        place={exhibitions[randnum[3]].place}
+                                        address={exhibitions[randnum[3]].address}
+                                        date={exhibitions[randnum[3]].date}
+                                        time={exhibitions[randnum[3]].time}
+                                        price={exhibitions[randnum[3]].price}
+                                        poster={exhibitions[randnum[3]].poster}
                                         index={3}
                                     />
 
@@ -211,16 +219,16 @@ class Home extends Component {
                                 (exhibitions.length == 0) ? <div></div> :
 
                                     <Exhibition
-                                        key={exhibitions[7].exhibit_id}
-                                        id={exhibitions[7].exhibit_id}
-                                        title={exhibitions[7].title}
-                                        place={exhibitions[7].place}
-                                        address={exhibitions[7].address}
-                                        date={exhibitions[7].date}
-                                        time={exhibitions[7].time}
-                                        price={exhibitions[7].price}
-                                        poster={exhibitions[7].poster}
-                                        index={7}
+                                        key='1000'
+                                        id='1000'
+                                        title="미니 갤러리"
+                                        place="KT 분당 본사 3층"
+                                        address="경기도 성남시 분당구 불정로 90 KT 본사"
+                                        date="상설 전시"
+                                        poster={require('../resources/exhibit/exhibit (3).jpg')}
+                                        desc="KT 분당 본사 3층에서 제공하는 고품격 명화 갤러리!"
+                                        index='1000'
+                                        type='online'
                                     />
 
                             }</Grid.Column>
