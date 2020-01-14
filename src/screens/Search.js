@@ -82,13 +82,18 @@ class Search extends React.Component {
       })
     }
 
-    getExhibitions = async () => {
+    getExhibitions = async (keyword) => {
       const {
-          data: {
-            data
-          }
-      } = await axios.get('http://211.254.213.185:5000/search/place');
-      console.log(data);
+        data: {
+          data
+        }
+      } = await axios.post(
+      'http://211.254.213.185:5000/search', 
+      {keyword : keyword});
+      
+      if (data == null) {
+        return;
+      }
       const pagedExhibitions = pagingExhibitions(data, 0);
       const maxPage = parseInt(data.length/6);
 
@@ -104,11 +109,15 @@ class Search extends React.Component {
           mapOpts
       );
 
+      
+
       this.setState({exhibitions: data, currentExhibitions: pagedExhibitions, maxPage: maxPage, isLoading: false, map: map})
     }
 
     async componentWillMount() {
-      this.getExhibitions();
+      const { location, history } = this.props;
+      console.log(location.state.keyword);
+      this.getExhibitions(location.state.keyword);
     }
 
     nextPaging = (exhibitions, page) => {
@@ -163,7 +172,6 @@ class Search extends React.Component {
                     width:'100%',
                     height:'100%'
                 }}>
-                  {/* <Map exhibitions={currentExhibitions}/> */}
                   </div>
             </div>
           </Grid.Column>
