@@ -31,7 +31,7 @@ function Exhibition({id, title, place, address, date, time, price, poster, index
     return (
         <Card class='exhibiton_card' style={{color: 'black', height:'100%', 
         width: '100%'}} onClick={() => {
-            alert(id)
+            // alert(id)
           }}>
             <div style={{height: '100%', width: '100%', display: 'flex'}}>
 
