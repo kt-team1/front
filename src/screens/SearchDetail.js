@@ -172,10 +172,14 @@ class SearchDetail extends React.Component {
                             padding: '16px'
                         }}>
                             <div className="buttons">
-                        <Button size="huge" labelPosition='left' icon='left chevron' content='뒤로가기' onClick={() => {
+                        <Button size="huge" labelPosition='left' icon='left chevron' content='뒤로가기' style={{
+          backgroundColor:'pink',
+          }} onClick={() => {
                             console.log("뒤로가기");
                         }}/>
-                        <Link to="/exhibition/detail/main"><Button size="huge" content='온라인전시'/></Link>
+                        <Link to="/exhibition/detail/main"><Button size="huge" content='온라인전시'style={{
+          backgroundColor:'pink',
+          }}/></Link>
                     </div>
                         </Grid.Row>
                     </Grid.Column>
