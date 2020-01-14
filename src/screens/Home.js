@@ -34,6 +34,10 @@ class Home extends Component {
         console.log("render start");
         return (
             <div class="home">
+                <script type="text/javascript" src="http://svcapi.gigagenie.ai/sdk/v1.0/js/gigagenie.js"></script>
+                <div>
+                    <init/>
+                </div>
                 <Grid style={{
                     width: '100%',
                     height: '100%',
@@ -228,5 +232,39 @@ class Home extends Component {
         )
     }
 }
+
+function init() {
+    options = {};
+    options.keytype = "GBOXDEVM"; // 개발(GBOXDEVM) 또는 상용(GBOXCOMM) 키 종류 입력
+    options.apikey = "RTUwMDQwMTB8R0JPWERFVk18MTU3NzY5NjcwMjQxOQ=="; // 개발자 포털에서 키를 발급받아 입력
+    gigagenie.init(options, function (result_cd, result_msg, extra) {
+      console.log('Initialize Start');
+      if (result_cd === 200) {
+        //init 성공
+        
+        //callback 방식으로, TTS로 재생한 후 음성 인식을 할 경우
+        var options={};
+        options.mode = 0
+        options.voicemsg="기가지니, 전시회 서비스를 시작합니다."
+        gigagenie.voice.getVoiceText(options,function(result_cd,result_msg,extra){
+            if(result_cd===200){
+              var options={};
+              options.ttstext=extra.voicetext;
+              gigagenie.voice.sendTTS(options,function(result_cd,result_msg,extra){
+                  if(result_cd===200){
+                      //do next action
+                  } else {
+                      //extra.reason 에 voice 오류 전달.
+                  };
+              });
+                console.log("Received Text is "+extra.voicetext);
+            };
+        });
+
+        console.log('Initialize Success');
+        //함수 호출 및 개발 진행
+      };
+    });
+  }
 
 export default Home;
