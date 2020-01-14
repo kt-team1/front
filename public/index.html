@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 <html>
-
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Type" Content="text/html; charset=utf-8" />
@@ -35,9 +35,10 @@
         //함수 호출 및 개발 진행
       };
     });
-  }
+  };
 
-  //서비스 종료 명령 수신 API
+
+  // 서비스 종료 명령 수신 API
   gigagenie.voice.onRequestClose = function () {
     options = {};
     gigagenie.voice.svcFinished(options, function (result_cd, result_msg, extra) {
