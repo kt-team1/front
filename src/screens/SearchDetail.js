@@ -168,5 +168,4 @@ const SearchDetail = (props) => {
 }
 
 
-
 export default SearchDetail;

@@ -1,6 +1,6 @@
 
 /* * {
-    box-sizing: border-box;
+git branch -d    box-sizing: border-box;
 } */
 
 body {
@@ -91,9 +91,8 @@ body,
 
 .searchMessage h1 {
     color: white;
-
+}
   
 .exhibiton_card {
     background-color: black;
-
 }

@@ -1,4 +1,27 @@
-div.show_exhibition img {
+#picture {
     width: 100vw;
     height: 100vh;
+}
+
+#up {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+}
+
+#back {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+}
+
+#right {
+    position: absolute;
+    right: 3%;
+    bottom: 50%;
+}
+
+div.show_exhibition {
+    margin: 0px;
+    padding: 0px;
 }
