@@ -42,7 +42,7 @@ class Map extends Component {
         marker.setMap(map);        
         marker['attribute'] = element
         this.markers.push(marker)
-      })
+        })
       
       var latitudes = []
       var longitudes = []
@@ -62,6 +62,7 @@ class Map extends Component {
       
       exhibitions.some((element) => {
         map.panToBounds(bounds);
+        // map.setZoom(1)
       })
     }
 
@@ -83,6 +84,7 @@ class Map extends Component {
 
     render() {
       const { map } = this.state;
+
       this.displayMarker(map, this.props.exhibitions);
 
       return (

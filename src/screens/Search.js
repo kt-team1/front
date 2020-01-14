@@ -78,7 +78,7 @@ class Search extends React.Component {
               width:'100%',
               height:'100%'
             }}>
-              <h1><strong>keyword</strong>에 대한 검색결과 입니다.</h1>
+              <h1><strong>키워드</strong>에 대한 검색결과 입니다.</h1>
             </div>
           </Grid.Column>
         </Grid.Row>
