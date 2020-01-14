@@ -28,6 +28,7 @@
     options.apikey = "RTUwMDQwMTB8R0JPWERFVk18MTU3NzY5NjcwMjQxOQ=="; // 개발자 포털에서 키를 발급받아 입력
 
     gigagenie.init(options, function (result_cd, result_msg, extra) {
+      console.log('Initialize Start');
       if (result_cd === 200) {
         //init 성공
         console.log('Initialize Success');
@@ -36,7 +37,7 @@
     });
   }
 
-  서비스 종료 명령 수신 API
+  //서비스 종료 명령 수신 API
   gigagenie.voice.onRequestClose = function () {
     options = {};
     gigagenie.voice.svcFinished(options, function (result_cd, result_msg, extra) {
