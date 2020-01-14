@@ -58,9 +58,11 @@ class Search extends React.Component {
       
       var latitudes = []
       var longitudes = []
-      exhibitions.some((element) => {
-        latitudes.push(element.latitude);
-        longitudes.push(element.longitude);
+      exhibitions.some((element, index) => {
+        if(!(element.latitude == null || element.longitude == null)) {
+          latitudes.push(element.latitude);
+          longitudes.push(element.longitude);
+        }
       })
 
       var top = Math.max.apply(null, latitudes)
@@ -72,9 +74,9 @@ class Search extends React.Component {
       var rt = new window.olleh.maps.LatLng(right, top); // 우측 상단 좌표
       var bounds = new window.olleh.maps.Bounds(lb, rt);
       
+
       exhibitions.some((element) => {
         map.panToBounds(bounds);
-        // map.setZoom(1)
       })
     }
 
@@ -115,8 +117,7 @@ class Search extends React.Component {
   render() {
     const { isLoading, exhibitions, page, maxPage, currentExhibitions, map } = this.state;
     this.displayMarker(map, currentExhibitions);
-    console.log('render()');
-    console.log(currentExhibitions);
+    
     return (
       <Grid style={{
         width: '100%',
@@ -135,7 +136,7 @@ class Search extends React.Component {
               width:'100%',
               height:'100%'
             }}>
-              <h1><strong>키워드</strong>에 대한 검색결과 입니다.</h1>
+              <h1><strong>전시회</strong> 검색결과 입니다.</h1>
             </div>
           </Grid.Column>
         </Grid.Row>

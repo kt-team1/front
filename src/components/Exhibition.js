@@ -38,12 +38,7 @@ function Exhibition({id, title, place, address, date, time, price, poster, index
                     <div style={{height: '50%'}}>
                      <h2 className="exhibition_title" 
                      style={{fontSize: '1vw'}}>
-                         <Link to={
-                             { 
-                                pathname: "/search/detail",
-                                myCustomProps: "hi"
-                            }
-                             }><strong>{title}</strong></Link>
+                         <Link to='/search/detail/1'><strong>{title}</strong></Link>
                     </h2>
                     </div>
                     <div style={{height: '30%', position: 'relative'}}>
