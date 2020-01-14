@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import SearchBar from '../components/Searchbar';
 import '../css/home.css';
 import { Grid, Button } from 'semantic-ui-react';
-import Exhibition from '../components/Exhibition';
+import HomeExhibition from '../components/HomeExhibition';
 import '../css/Search.css';
 import axios from "axios";
 
@@ -12,7 +12,8 @@ class Home extends Component {
     state = {
         isLoading: true,
         keyword: "...을 검색한 결과입니다.",
-        exhibitions: []
+        exhibitions: [],
+        currentExhibitions: [],
     };
     
     getExhibitions = async () => {
@@ -22,7 +23,7 @@ class Home extends Component {
             }
 
         } = await axios.get('http://211.254.213.185:5000/search/place');
-        this.setState({ exhibitions: data, isLoading: false })
+        this.setState({ currentExhibitions: data, isLoading: false })
         console.log(data);
     }
 
@@ -32,7 +33,7 @@ class Home extends Component {
 
 
     render() {
-        const { isLoading, exhibitions } = this.state
+        const { isLoading, exhibitions, page, maxPage, currentExhibitions, map } = this.state;
         console.log("render start");
         return (
             <div class="home">
@@ -71,67 +72,67 @@ class Home extends Component {
                             marginBottom: '5%',
                         }}>
                             <Grid.Column>{
-                                (exhibitions.length == 0) ? <div></div> :
-                                    <Exhibition
-                                        key={exhibitions[0].exhibit_id}
-                                        id={exhibitions[0].exhibit_id}
-                                        title={exhibitions[0].title}
-                                        place={exhibitions[0].place}
-                                        address={exhibitions[0].address}
-                                        date={exhibitions[0].date}
-                                        time={exhibitions[0].time}
-                                        price={exhibitions[0].price}
-                                        poster={exhibitions[0].poster}
-                                        index={0}
+                                (currentExhibitions.length == 0) ? <div></div> :
+                                    <HomeExhibition
+                                    key={currentExhibitions[0].exhibit_id}
+                                    id={currentExhibitions[0].exhibit_id}
+                                    title={currentExhibitions[0].title}
+                                    place={currentExhibitions[0].place}
+                                    address={currentExhibitions[0].address}
+                                    date={currentExhibitions[0].date}
+                                    time={currentExhibitions[0].time}
+                                    price={currentExhibitions[0].price}
+                                    poster={currentExhibitions[0].poster}
+                                    index={0}
                                     />
                             }</Grid.Column>
                             <Grid.Column>{
-                                (exhibitions.length == 0) ? <div></div> :
-                                    <Exhibition
-                                        key={exhibitions[1].exhibit_id}
-                                        id={exhibitions[1].exhibit_id}
-                                        title={exhibitions[1].title}
-                                        place={exhibitions[1].place}
-                                        address={exhibitions[1].address}
-                                        date={exhibitions[1].date}
-                                        time={exhibitions[1].time}
-                                        price={exhibitions[1].price}
-                                        poster={exhibitions[1].poster}
-                                        index={1}
-                                    />
-
-                            }</Grid.Column>
-                            <Grid.Column>{
-                                (exhibitions.length == 0) ? <div></div> :
-
-                                    <Exhibition
-                                        key={exhibitions[2].exhibit_id}
-                                        id={exhibitions[2].exhibit_id}
-                                        title={exhibitions[2].title}
-                                        place={exhibitions[2].place}
-                                        address={exhibitions[2].address}
-                                        date={exhibitions[2].date}
-                                        time={exhibitions[2].time}
-                                        price={exhibitions[2].price}
-                                        poster={exhibitions[2].poster}
-                                        index={2}
+                                (currentExhibitions.length == 0) ? <div></div> :
+                                    <HomeExhibition
+                                    key={currentExhibitions[1].exhibit_id}
+                                    id={currentExhibitions[1].exhibit_id}
+                                    title={currentExhibitions[1].title}
+                                    place={currentExhibitions[1].place}
+                                    address={currentExhibitions[1].address}
+                                    date={currentExhibitions[1].date}
+                                    time={currentExhibitions[1].time}
+                                    price={currentExhibitions[1].price}
+                                    poster={currentExhibitions[1].poster}
+                                    index={1}
                                     />
 
                             }</Grid.Column>
                             <Grid.Column>{
-                                (exhibitions.length == 0) ? <div></div> :
+                                (currentExhibitions.length == 0) ? <div></div> :
 
-                                    <Exhibition
-                                        key={exhibitions[3].exhibit_id}
-                                        id={exhibitions[3].exhibit_id}
-                                        title={exhibitions[3].title}
-                                        place={exhibitions[3].place}
-                                        address={exhibitions[3].address}
-                                        date={exhibitions[3].date}
-                                        time={exhibitions[3].time}
-                                        price={exhibitions[3].price}
-                                        poster={exhibitions[3].poster}
-                                        index={3}
+                                    <HomeExhibition
+                                    key={currentExhibitions[2].exhibit_id}
+                                    id={currentExhibitions[2].exhibit_id}
+                                    title={currentExhibitions[2].title}
+                                    place={currentExhibitions[2].place}
+                                    address={currentExhibitions[2].address}
+                                    date={currentExhibitions[2].date}
+                                    time={currentExhibitions[2].time}
+                                    price={currentExhibitions[2].price}
+                                    poster={currentExhibitions[2].poster}
+                                    index={2}
+                                    />
+
+                            }</Grid.Column>
+                            <Grid.Column>{
+                                (currentExhibitions.length == 0) ? <div></div> :
+
+                                    <HomeExhibition
+                                    key={currentExhibitions[3].exhibit_id}
+                                    id={currentExhibitions[3].exhibit_id}
+                                    title={currentExhibitions[3].title}
+                                    place={currentExhibitions[3].place}
+                                    address={currentExhibitions[3].address}
+                                    date={currentExhibitions[3].date}
+                                    time={currentExhibitions[3].time}
+                                    price={currentExhibitions[3].price}
+                                    poster={currentExhibitions[3].poster}
+                                    index={3}
                                     />
 
 
@@ -157,70 +158,70 @@ class Home extends Component {
                             height: '40%'
                         }}>
                             <Grid.Column>{
-                                (exhibitions.length == 0) ? <div></div> :
+                                (currentExhibitions.length == 0) ? <div></div> :
 
-                                    <Exhibition
-                                        key={exhibitions[4].exhibit_id}
-                                        id={exhibitions[4].exhibit_id}
-                                        title={exhibitions[4].title}
-                                        place={exhibitions[4].place}
-                                        address={exhibitions[4].address}
-                                        date={exhibitions[4].date}
-                                        time={exhibitions[4].time}
-                                        price={exhibitions[4].price}
-                                        poster={exhibitions[4].poster}
-                                        index={4}
+                                    <HomeExhibition
+                                    key={currentExhibitions[4].exhibit_id}
+                                    id={currentExhibitions[4].exhibit_id}
+                                    title={currentExhibitions[4].title}
+                                    place={currentExhibitions[4].place}
+                                    address={currentExhibitions[4].address}
+                                    date={currentExhibitions[4].date}
+                                    time={currentExhibitions[4].time}
+                                    price={currentExhibitions[4].price}
+                                    poster={currentExhibitions[4].poster}
+                                    index={4}
                                     />
 
                             }</Grid.Column>
                             <Grid.Column>{
-                                (exhibitions.length == 0) ? <div></div> :
+                                (currentExhibitions.length == 0) ? <div></div> :
 
-                                    <Exhibition
-                                        key={exhibitions[5].exhibit_id}
-                                        id={exhibitions[5].exhibit_id}
-                                        title={exhibitions[5].title}
-                                        place={exhibitions[5].place}
-                                        address={exhibitions[5].address}
-                                        date={exhibitions[5].date}
-                                        time={exhibitions[5].time}
-                                        price={exhibitions[5].price}
-                                        poster={exhibitions[5].poster}
-                                        index={5}
+                                    <HomeExhibition
+                                    key={currentExhibitions[5].exhibit_id}
+                                    id={currentExhibitions[5].exhibit_id}
+                                    title={currentExhibitions[5].title}
+                                    place={currentExhibitions[5].place}
+                                    address={currentExhibitions[5].address}
+                                    date={currentExhibitions[5].date}
+                                    time={currentExhibitions[5].time}
+                                    price={currentExhibitions[5].price}
+                                    poster={currentExhibitions[5].poster}
+                                    index={5}
                                     />
 
                             }</Grid.Column>
                             <Grid.Column>{
-                                (exhibitions.length == 0) ? <div></div> :
+                                (currentExhibitions.length == 0) ? <div></div> :
 
-                                    <Exhibition
-                                        key={exhibitions[6].exhibit_id}
-                                        id={exhibitions[6].exhibit_id}
-                                        title={exhibitions[6].title}
-                                        place={exhibitions[6].place}
-                                        address={exhibitions[6].address}
-                                        date={exhibitions[6].date}
-                                        time={exhibitions[6].time}
-                                        price={exhibitions[6].price}
-                                        poster={exhibitions[6].poster}
-                                        index={6}
+                                    <HomeExhibition
+                                    key={currentExhibitions[6].exhibit_id}
+                                    id={currentExhibitions[6].exhibit_id}
+                                    title={currentExhibitions[6].title}
+                                    place={currentExhibitions[6].place}
+                                    address={currentExhibitions[6].address}
+                                    date={currentExhibitions[6].date}
+                                    time={currentExhibitions[6].time}
+                                    price={currentExhibitions[6].price}
+                                    poster={currentExhibitions[6].poster}
+                                    index={6}
                                     />
 
                             }</Grid.Column>
                             <Grid.Column>{
-                                (exhibitions.length == 0) ? <div></div> :
+                                (currentExhibitions.length == 0) ? <div></div> :
 
-                                    <Exhibition
-                                        key={exhibitions[7].exhibit_id}
-                                        id={exhibitions[7].exhibit_id}
-                                        title={exhibitions[7].title}
-                                        place={exhibitions[7].place}
-                                        address={exhibitions[7].address}
-                                        date={exhibitions[7].date}
-                                        time={exhibitions[7].time}
-                                        price={exhibitions[7].price}
-                                        poster={exhibitions[7].poster}
-                                        index={7}
+                                    <HomeExhibition
+                                    key={currentExhibitions[7].exhibit_id}
+                                    id={currentExhibitions[7].exhibit_id}
+                                    title={currentExhibitions[7].title}
+                                    place={currentExhibitions[7].place}
+                                    address={currentExhibitions[7].address}
+                                    date={currentExhibitions[7].date}
+                                    time={currentExhibitions[7].time}
+                                    price={currentExhibitions[7].price}
+                                    poster={currentExhibitions[7].poster}
+                                    index={7}
                                     />
 
                             }</Grid.Column>

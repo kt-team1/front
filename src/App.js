@@ -17,7 +17,7 @@ function App() {
       <Route path="/search" exact={true} component={Search}/>
       <Route path="/search/:id" exact={true} component={SearchDetail}/>
       <Route path="/exhibition/" exact={true} component={OnlineExhibition}/>
-      <Route path="/exhibition/detail" exact={true} component={ExhibitionDetail}/>
+      <Route path="/exhibition/detail/:id" exact={true} component={ExhibitionDetail}/>
       <Route path="/exhibition/detail/main" exact={true} component={ShowExhibition}/>
       <Route path="/exhibition/detail/pic" exact={true} component={Picture}/>
     </BrowserRouter>
