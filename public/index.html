@@ -30,14 +30,12 @@
       console.log('Initialize Start');
       if (result_cd === 200) {
         //init 성공
-        //callback 방식
+        //callback 방식으로, TTS로 재생한 후 음성 인식을 할 경우
         var options={};
-        options.ttstext="은이님 몸은 좀 괜찮으신가요";
-        gigagenie.voice.sendTTS(options,function(result_cd,result_msg,extra){
+        options.voicemsg="생년월일을 말해 주세요"
+        gigagenie.voice.getVoiceText(options,function(result_cd,result_msg,extra){
             if(result_cd===200){
-                //do next action
-            } else {
-                //extra.reason 에 voice 오류 전달.
+                console.log("Received Text is "+extra.voicetext);
             };
         });
         console.log('Initialize Success');
