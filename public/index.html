@@ -30,7 +30,19 @@
       console.log('Initialize Start');
       if (result_cd === 200) {
         //init 성공
-        //callback 방식으로, TTS로 재생한 후 음성 인식을 할 경우
+
+        gigagenie.voice.onActionEvent=function(extra){
+        switch(extra.actioncode){
+          case '1_SEARCH':
+              //QueryHello 처리
+              break;
+          case '1_SELECT':
+              //QUeryWorld 처리
+              break;
+          default:s
+              break;
+        }};
+
         console.log('Initialize Success');
         //함수 호출 및 개발 진행
       };
