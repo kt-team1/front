@@ -5,11 +5,10 @@ import Exhibition from '../components/Exhibition'
 import '../css/Search.css'
 import { Grid, Button } from 'semantic-ui-react'
 
-const getMap = () => (
-  <div>
-    <Map/>
-  </div>
-)
+function latlngToUtmk(x, y){ 
+  let p = window.olleh.maps.UTMK.valueOf(new window.olleh.maps.LatLng(x, y))
+  return p
+}
 
 const pagingExhibitions = (exhibitions, page) => {
   const pagedExhibitions = [];
@@ -34,21 +33,79 @@ class Search extends React.Component {
       exhibitions: [],
       currentExhibitions: [],
       page: 0,
-      maxPage: 0
+      maxPage: 0,
+      map: Map
     };
     
+
+    markers = []
+    displayMarker = (map, exhibitions) => {
+      this.markers.some((marker, index) => {
+        marker.erase();
+      })
+      this.markers = null
+      this.markers = []
+      
+      exhibitions.some((element, idx) => {
+        let point = latlngToUtmk(element.longitude, element.latitude)
+        let marker = new window.olleh.maps.overlay.Marker({
+          position: point
+        });
+        marker.setMap(map);        
+        marker['attribute'] = element
+        this.markers.push(marker)
+        })
+      
+      var latitudes = []
+      var longitudes = []
+      exhibitions.some((element, index) => {
+        if(!(element.latitude == null || element.longitude == null)) {
+          latitudes.push(element.latitude);
+          longitudes.push(element.longitude);
+        }
+      })
+
+      var top = Math.max.apply(null, latitudes)
+      var bottom = Math.min.apply(null, latitudes)
+      var right = Math.max.apply(null, longitudes)
+      var left = Math.min.apply(null, longitudes)
+
+      var lb = new window.olleh.maps.LatLng(left, bottom); // 좌측 하단 좌표
+      var rt = new window.olleh.maps.LatLng(right, top); // 우측 상단 좌표
+      var bounds = new window.olleh.maps.Bounds(lb, rt);
+      
+
+      exhibitions.some((element) => {
+        map.panToBounds(bounds);
+      })
+    }
+
     getExhibitions = async () => {
       const {
           data: {
-            search
+            data
           }
-      } = await axios.get('http://211.254.213.185:5000/searchapi');
-      const pagedExhibitions = pagingExhibitions(search, 0);
-      const maxPage = parseInt(search.length/6);
-      this.setState({exhibitions: search, currentExhibitions:pagedExhibitions, maxPage: maxPage, isLoading: false})
+      } = await axios.get('http://211.254.213.185:5000/search/place');
+      console.log(data);
+      const pagedExhibitions = pagingExhibitions(data, 0);
+      const maxPage = parseInt(data.length/6);
+
+      var mapOpts = {
+        center: new window.olleh.maps.UTMK(960823.7, 1945435.52),
+        zoom: 8,
+        mapTypeId: 'ROADMAP',
+        panControl: true,
+        disableDefaultUI: true,
+        zoomControl: true
+      };
+      var map = new window.olleh.maps.Map(document.getElementById("map_div",),
+          mapOpts
+      );
+
+      this.setState({exhibitions: data, currentExhibitions: pagedExhibitions, maxPage: maxPage, isLoading: false, map: map})
     }
 
-    async componentDidMount() {
+    async componentWillMount() {
       this.getExhibitions();
     }
 
@@ -57,31 +114,15 @@ class Search extends React.Component {
       this.setState({currentExhibitions: pagedExhibitions, page: page})
     }
 
-    // presentExhibition = (index) => {
-    //   const { currentExhibitions } = this.state
-    //     (currentExhibitions.length <= index)? <div></div> :
-    //     <Exhibition
-    //       key={currentExhibitions[index].exhibit_id}
-    //       id={currentExhibitions[index].exhibit_id}
-    //       title={currentExhibitions[index].title}
-    //       place={currentExhibitions[index].place}
-    //       address={currentExhibitions[index].address}
-    //       date={currentExhibitions[index].date}
-    //       time={currentExhibitions[index].time}
-    //       price={currentExhibitions[index].price}
-    //       poster={currentExhibitions[index].poster}
-    //       index={index}
-    //     />                     
-    // }
-
   render() {
-    const { isLoading, exhibitions, page, maxPage, currentExhibitions } = this.state
-    console.log(page);
+    const { isLoading, exhibitions, page, maxPage, currentExhibitions, map } = this.state;
+    this.displayMarker(map, currentExhibitions);
+    
     return (
       <Grid style={{
         width: '100%',
         height: '100%',
-        padding: '50px 100px 50px 100px',
+        padding: '54px 96px 54px 96px',
         margin: '0'
       }}>
         <Grid.Row style={{
@@ -95,7 +136,7 @@ class Search extends React.Component {
               width:'100%',
               height:'100%'
             }}>
-              <h1><strong>keyword</strong>에 대한 검색결과 입니다.</h1>
+              <h1><strong>전시회</strong> 검색결과 입니다.</h1>
             </div>
           </Grid.Column>
         </Grid.Row>
@@ -112,9 +153,12 @@ class Search extends React.Component {
               width: '100%',
               height: '100%'
             }}>
-              <div id='map_div'>
-                {getMap()}
-              </div>
+              <div id='map_div' style={{
+                    width:'100%',
+                    height:'100%'
+                }}>
+                  {/* <Map exhibitions={currentExhibitions}/> */}
+                  </div>
             </div>
           </Grid.Column>
           <Grid.Column celled='internally' width={12} style={{
@@ -143,6 +187,8 @@ class Search extends React.Component {
                       price={currentExhibitions[0].price}
                       poster={currentExhibitions[0].poster}
                       index={0}
+                      x={currentExhibitions[0].latitude}
+                      y={currentExhibitions[0].latitude}
                     />                     
                   }
                 </Grid.Column>

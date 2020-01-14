@@ -132,3 +132,7 @@ body,
     align-items: flex-start;
     flex-wrap: wrap;
 }
+
+#map_div {
+    display: inline !important;
+}

@@ -9,7 +9,6 @@ import ShowExhibition from '../screens/ShowExhibition';
 import Picture from '../screens/ShowPicDetail';
 import ExhibitionDetail from '../screens/ExhibitionDetail';
 
-
 class App extends Component {
   render() {
     return (
