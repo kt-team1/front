@@ -34,21 +34,19 @@ class Search extends React.Component {
     getExhibitions = async () => {
       const {
           data: {
-            search
+            data
           }
-      } = await axios.get('http://211.254.213.185:5000/searchapi');
-      console.log('getExhibitons()');
-      const pagedExhibitions = pagingExhibitions(search, 0);
-      const maxPage = parseInt(search.length/6);
-      this.setState({exhibitions: search, currentExhibitions: pagedExhibitions, maxPage: maxPage, isLoading: false})
+      } = await axios.get('http://211.254.213.185:5000/search/place');
+      console.log(data);
+      const pagedExhibitions = pagingExhibitions(data, 0);
+      const maxPage = parseInt(data.length/6);
+
+      this.setState({exhibitions: data, currentExhibitions: pagedExhibitions, maxPage: maxPage, isLoading: false})
     }
 
     async componentWillMount() {
       this.getExhibitions();
     }
-    // async componentDidMount() {
-    //   this.getExhibitions();
-    // }
 
     nextPaging = (exhibitions, page) => {
       const pagedExhibitions = pagingExhibitions(exhibitions, page)
@@ -60,7 +58,6 @@ class Search extends React.Component {
     console.log('render()');
     console.log(currentExhibitions);
     return (
-      
       <Grid style={{
         width: '100%',
         height: '100%',

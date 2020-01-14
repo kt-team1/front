@@ -11,7 +11,7 @@ class SearchDetail extends Component {
           console.log("did");
       }
     render() {
-        console.log(this.props.key)
+        console.log(thi)
         return (
             <Grid style={{
                 width: '100%',
