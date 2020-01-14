@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Grid, Button} from 'semantic-ui-react';
+import { Grid, Button } from 'semantic-ui-react';
+import { render } from '@testing-library/react';
 
 class SearchDetail extends React.Component {
     componentDidMount() {

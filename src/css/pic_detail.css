@@ -1,0 +1,10 @@
+#pic_detail {
+    font-size: 1.3rem;
+    padding: 1%;
+    width: 25%;
+    height: 30%;
+    background-color: bisque;
+    position: absolute;
+    bottom: 5%;
+    right: 3%;
+}

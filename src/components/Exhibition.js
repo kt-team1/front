@@ -4,6 +4,7 @@ import PropTypes, { func } from "prop-types";
 import { Card, Image} from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
+
 const numberingWithIndex = (index) => {
     switch (index) {
         case 0:

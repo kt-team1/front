@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../css/showExhibition.css';
 import Screen from '../components/Screen';
 
-const exhibit = [
+let exhibit = [
     {
         id: 1, source: require("../resources/exhibit/exhibit (1).jpg"),
         right: false, img: null
@@ -132,7 +132,7 @@ class ShowExhibition extends Component {
     render() {
         return (
             <div className="show_exhibition">
-                <Screen key={exhibit[0].id} theme={exhibit} />
+                <Screen key={exhibit.id} theme={exhibit} />
             </div>
         );
     }
