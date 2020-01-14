@@ -129,7 +129,7 @@ class ExhibitionDetail extends React.Component {
                                     <h2 style={{
                                         fontSize: '2.85vh',
                                         color: 'white'
-                                    }}>{location.state.address}}</h2>
+                                    }}>{location.state.address}</h2>
                                 </Grid.Column>
                             </Grid>
                         </Grid.Row>
@@ -186,7 +186,12 @@ class ExhibitionDetail extends React.Component {
                                 <Button size="huge" content='온라인전시' 
                                 style={{ visibility: location.state.type === 'online' ? 'visible' : 'hidden'}}
                                 onClick={() => {
-                                    window.location = '/exhibition/detail/' + location.state.id + '/main';
+                                    if (location.state.id === '1000') {
+                                        window.location = '/exhibition/detail/' + location.state.id + '/main';
+                                    }
+                                    else {
+                                        alert("아직 준비 중입니다!")
+                                    }
                                 }}/>
                             </div>
                         </Grid.Row>
