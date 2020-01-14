@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter, Route } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route } from "react-router-dom";
 import './css/App.css';
 import Home from './screens/Home';
 import Search from './screens/Search';
@@ -12,15 +12,16 @@ import Exhibition from './components/Exhibition';
 
 function App() {
     return (
-      <HashRouter>
+      <BrowserRouter>
         <Route path="/" exact={true} component={Home}/>
+        {/* <Route path="/search" exact={true} component={Search}/> */}
         <Route path="/search" exact={true} component={Search}/>
-        <Route path="/search/:id" component={SearchDetail}/>
-        <Route path="/exhibition/" component={OnlineExhibition}/>
-        <Route path="/exhibition/detail" component={ExhibitionDetail}/>
-        <Route path="/exhibition/detail/main" component={ShowExhibition}/>
-        <Route path="/exhibition/detail/pic" component={Picture}/>
-      </HashRouter>
+        <Route path="/search/:id" exact={true} component={SearchDetail}/>
+        <Route path="/exhibition/" exact={true} component={OnlineExhibition}/>
+        <Route path="/exhibition/detail" exact={true} component={ExhibitionDetail}/>
+        <Route path="/exhibition/detail/main" exact={true} component={ShowExhibition}/>
+        <Route path="/exhibition/detail/pic" exact={true} component={Picture}/>
+      </BrowserRouter>
     );
 }
 
