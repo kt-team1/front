@@ -49,7 +49,7 @@ class Search extends React.Component {
       this.markers = []
       
       exhibitions.some((element, idx) => {
-        let point = latlngToUtmk(element.y, element.x)
+        let point = latlngToUtmk(element.longitude, element.latitude)
         let marker = new window.olleh.maps.overlay.Marker({
           position: point
         });
@@ -61,9 +61,9 @@ class Search extends React.Component {
       var latitudes = []
       var longitudes = []
       exhibitions.some((element, index) => {
-        if(!(element.x == null || element.y == null)) {
-          latitudes.push(element.x);
-          longitudes.push(element.y);
+        if(!(element.latitude == null || element.longitude == null)) {
+          latitudes.push(element.latitude);
+          longitudes.push(element.longitude);
         }
       })
 
