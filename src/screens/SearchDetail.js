@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Button } from 'semantic-ui-react';
 import { render } from '@testing-library/react';
+import { withRouter } from 'react-router-dom';
 
 class SearchDetail extends React.Component {
     componentDidMount() {
@@ -158,13 +159,14 @@ class SearchDetail extends React.Component {
                             padding: '16px'
                         }}>
                             <div className="buttons">
-                                <Button size="huge" labelPosition='left' icon='left chevron' content='뒤로가기' onClick={() => {
-                                    console.log("뒤로가기");
-                                }}/>
+                                <Button size="huge" labelPosition='left' icon='left chevron' content='뒤로가기' 
+                                onClick={function(e) {
+                                    this.props.history.goBack();
+                                }.bind(this)} />
                                 <Button size="huge" content='온라인전시' 
                                 style={{ visibility: location.state.type === 'online' ? 'visible' : 'hidden'}}
                                 onClick={() => {
-                                    console.log("온라인전시");
+                                    window.location = '/exhibition/detail/main';
                                 }}/>
                             </div>
                         </Grid.Row>

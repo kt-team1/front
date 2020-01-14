@@ -129,6 +129,13 @@ let exhibit = [
 
 
 class ShowExhibition extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            theme : []
+        }
+    }
+
     render() {
         return (
             <div className="show_exhibition">
