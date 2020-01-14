@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 // import Recommendation from '../components/Recommendation';
 import SearchBar from '../components/Searchbar';
 import '../css/home.css';
-import { Grid, Button } from 'semantic-ui-react'
-import Exhibition from '../components/Exhibition'
-import '../css/Search.css'
-import axios from "axios"
+import { Grid, Button } from 'semantic-ui-react';
+import Exhibition from '../components/Exhibition';
+import '../css/Search.css';
+import axios from "axios";
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
     state = {
@@ -17,10 +18,11 @@ class Home extends Component {
     getExhibitions = async () => {
         const {
             data: {
-                search
+                data
             }
-        } = await axios.get('http://211.254.213.185:5000/searchapi');
-        this.setState({ exhibitions: search, isLoading: false })
+        } = await axios.get('http://211.254.213.185:5000/search/place');
+        this.setState({ exhibitions: data, isLoading: false })
+        console.log(data);
     }
 
     async componentDidMount() {
@@ -56,74 +58,82 @@ class Home extends Component {
                                     color: 'white',
                                     fontSize: '2.0vw',
                                     fontWeight: '500',
-                                    textAlign: 'left', 
+                                    textAlign: 'left',
                                     textShadow: '1px 1px 30px white',
                                 }}>추천 전시</h1>
                             </div>
                         </Grid>
                         <Grid columns={4} style={{
-                            height: '40%', 
+                            height: '40%',
                             marginBottom: '5%',
                         }}>
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
-                                    <Exhibition
-                                        key={exhibitions[0].exhibit_id}
-                                        id={exhibitions[0].exhibit_id}
-                                        title={exhibitions[0].title}
-                                        place={exhibitions[0].place}
-                                        address={exhibitions[0].address}
-                                        date={exhibitions[0].date}
-                                        time={exhibitions[0].time}
-                                        price={exhibitions[0].price}
-                                        poster={exhibitions[0].poster}
-                                        index={0}
-                                    />
+                                    <Link to="/exhibition/detail">
+                                        <Exhibition
+                                            key={exhibitions[0].exhibit_id}
+                                            id={exhibitions[0].exhibit_id}
+                                            title={exhibitions[0].title}
+                                            place={exhibitions[0].place}
+                                            address={exhibitions[0].address}
+                                            date={exhibitions[0].date}
+                                            time={exhibitions[0].time}
+                                            price={exhibitions[0].price}
+                                            poster={exhibitions[0].poster}
+                                            index={0}
+                                        />
+                                    </Link>
                             }</Grid.Column>
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
-                                    <Exhibition
-                                        key={exhibitions[1].exhibit_id}
-                                        id={exhibitions[1].exhibit_id}
-                                        title={exhibitions[1].title}
-                                        place={exhibitions[1].place}
-                                        address={exhibitions[1].address}
-                                        date={exhibitions[1].date}
-                                        time={exhibitions[1].time}
-                                        price={exhibitions[1].price}
-                                        poster={exhibitions[1].poster}
-                                        index={1}
-                                    />
+                                    <Link to="/exhibition/detail">
+                                        <Exhibition
+                                            key={exhibitions[1].exhibit_id}
+                                            id={exhibitions[1].exhibit_id}
+                                            title={exhibitions[1].title}
+                                            place={exhibitions[1].place}
+                                            address={exhibitions[1].address}
+                                            date={exhibitions[1].date}
+                                            time={exhibitions[1].time}
+                                            price={exhibitions[1].price}
+                                            poster={exhibitions[1].poster}
+                                            index={1}
+                                        />
+                                    </Link>
                             }</Grid.Column>
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
-                                    <Exhibition
-                                        key={exhibitions[2].exhibit_id}
-                                        id={exhibitions[2].exhibit_id}
-                                        title={exhibitions[2].title}
-                                        place={exhibitions[2].place}
-                                        address={exhibitions[2].address}
-                                        date={exhibitions[2].date}
-                                        time={exhibitions[2].time}
-                                        price={exhibitions[2].price}
-                                        poster={exhibitions[2].poster}
-                                        index={2}
-                                    />
+                                    <Link to="/exhibition/detail">
+                                        <Exhibition
+                                            key={exhibitions[2].exhibit_id}
+                                            id={exhibitions[2].exhibit_id}
+                                            title={exhibitions[2].title}
+                                            place={exhibitions[2].place}
+                                            address={exhibitions[2].address}
+                                            date={exhibitions[2].date}
+                                            time={exhibitions[2].time}
+                                            price={exhibitions[2].price}
+                                            poster={exhibitions[2].poster}
+                                            index={2}
+                                        />
+                                    </Link>
                             }</Grid.Column>
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
-                                    <Exhibition
-                                        key={exhibitions[3].exhibit_id}
-                                        id={exhibitions[3].exhibit_id}
-                                        title={exhibitions[3].title}
-                                        place={exhibitions[3].place}
-                                        address={exhibitions[3].address}
-                                        date={exhibitions[3].date}
-                                        time={exhibitions[3].time}
-                                        price={exhibitions[3].price}
-                                        poster={exhibitions[3].poster}
-                                        index={3}
-                                    />
+                                    <Link to="/exhibition/detail">
+                                        <Exhibition
+                                            key={exhibitions[3].exhibit_id}
+                                            id={exhibitions[3].exhibit_id}
+                                            title={exhibitions[3].title}
+                                            place={exhibitions[3].place}
+                                            address={exhibitions[3].address}
+                                            date={exhibitions[3].date}
+                                            time={exhibitions[3].time}
+                                            price={exhibitions[3].price}
+                                            poster={exhibitions[3].poster}
+                                            index={3}
+                                        />
+                                    </Link>
                             }</Grid.Column>
                         </Grid>
                         <Grid style={{
@@ -147,63 +157,71 @@ class Home extends Component {
                         }}>
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
-                                    <Exhibition
-                                        key={exhibitions[0].exhibit_id}
-                                        id={exhibitions[0].exhibit_id}
-                                        title={exhibitions[0].title}
-                                        place={exhibitions[0].place}
-                                        address={exhibitions[0].address}
-                                        date={exhibitions[0].date}
-                                        time={exhibitions[0].time}
-                                        price={exhibitions[0].price}
-                                        poster={exhibitions[0].poster}
-                                        index={0}
-                                    />
+                                    <Link to="/exhibition/detail">
+                                        <Exhibition
+                                            key={exhibitions[4].exhibit_id}
+                                            id={exhibitions[4].exhibit_id}
+                                            title={exhibitions[4].title}
+                                            place={exhibitions[4].place}
+                                            address={exhibitions[4].address}
+                                            date={exhibitions[4].date}
+                                            time={exhibitions[4].time}
+                                            price={exhibitions[4].price}
+                                            poster={exhibitions[4].poster}
+                                            index={4}
+                                        />
+                                    </Link>
                             }</Grid.Column>
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
-                                    <Exhibition
-                                        key={exhibitions[1].exhibit_id}
-                                        id={exhibitions[1].exhibit_id}
-                                        title={exhibitions[1].title}
-                                        place={exhibitions[1].place}
-                                        address={exhibitions[1].address}
-                                        date={exhibitions[1].date}
-                                        time={exhibitions[1].time}
-                                        price={exhibitions[1].price}
-                                        poster={exhibitions[1].poster}
-                                        index={1}
-                                    />
+                                    <Link to="/exhibition/detail">
+                                        <Exhibition
+                                            key={exhibitions[5].exhibit_id}
+                                            id={exhibitions[5].exhibit_id}
+                                            title={exhibitions[5].title}
+                                            place={exhibitions[5].place}
+                                            address={exhibitions[5].address}
+                                            date={exhibitions[5].date}
+                                            time={exhibitions[5].time}
+                                            price={exhibitions[5].price}
+                                            poster={exhibitions[5].poster}
+                                            index={5}
+                                        />
+                                    </Link>
                             }</Grid.Column>
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
-                                    <Exhibition
-                                        key={exhibitions[2].exhibit_id}
-                                        id={exhibitions[2].exhibit_id}
-                                        title={exhibitions[2].title}
-                                        place={exhibitions[2].place}
-                                        address={exhibitions[2].address}
-                                        date={exhibitions[2].date}
-                                        time={exhibitions[2].time}
-                                        price={exhibitions[2].price}
-                                        poster={exhibitions[2].poster}
-                                        index={2}
-                                    />
+                                    <Link to="/exhibition/detail">
+                                        <Exhibition
+                                            key={exhibitions[6].exhibit_id}
+                                            id={exhibitions[6].exhibit_id}
+                                            title={exhibitions[6].title}
+                                            place={exhibitions[6].place}
+                                            address={exhibitions[6].address}
+                                            date={exhibitions[6].date}
+                                            time={exhibitions[6].time}
+                                            price={exhibitions[6].price}
+                                            poster={exhibitions[6].poster}
+                                            index={6}
+                                        />
+                                    </Link>
                             }</Grid.Column>
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
-                                    <Exhibition
-                                        key={exhibitions[3].exhibit_id}
-                                        id={exhibitions[3].exhibit_id}
-                                        title={exhibitions[3].title}
-                                        place={exhibitions[3].place}
-                                        address={exhibitions[3].address}
-                                        date={exhibitions[3].date}
-                                        time={exhibitions[3].time}
-                                        price={exhibitions[3].price}
-                                        poster={exhibitions[3].poster}
-                                        index={3}
-                                    />
+                                    <Link to="/exhibition/detail">
+                                        <Exhibition
+                                            key={exhibitions[7].exhibit_id}
+                                            id={exhibitions[7].exhibit_id}
+                                            title={exhibitions[7].title}
+                                            place={exhibitions[7].place}
+                                            address={exhibitions[7].address}
+                                            date={exhibitions[7].date}
+                                            time={exhibitions[7].time}
+                                            price={exhibitions[7].price}
+                                            poster={exhibitions[7].poster}
+                                            index={7}
+                                        />
+                                    </Link>
                             }</Grid.Column>
                         </Grid>
                     </Grid.Column>
