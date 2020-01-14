@@ -40,7 +40,7 @@ function Exhibition({id, title, place, address, date, time, price, poster, index
                 <img src={poster} alt={title} title={title} style={{width: '50%', height: '100%', objectFit: 'cover'}}/>
                 <div className="exhibition_data" style={{width: '50%', height: '100%', padding: '20px'}}>
                     <div style={{height: '50%'}}>
-                     <Link to=""><h2 className="exhibition_title" 
+                    <Link to="/exhibition/detail"><h2 className="exhibition_title" 
                      style={{fontSize: '1vw'}}><strong>{title}</strong></h2></Link>
                     </div>
                     <div style={{height: '30%', position: 'relative'}}>
