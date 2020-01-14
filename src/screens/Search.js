@@ -90,7 +90,7 @@ class Search extends React.Component {
       } = await axios.post(
       'http://211.254.213.185:5000/search', 
       {keyword : keyword});
-      
+      console.log(data);
       if (data == null) {
         return;
       }
@@ -151,7 +151,7 @@ class Search extends React.Component {
             }}><Link to="/">
               <img style = {{float:"left",}} src={this.state.img}
                 width="4%" height="50%"></img></Link>
-              <h1><strong>전시회</strong> 검색결과 입니다.</h1>
+              <h1><strong>키워드</strong> 검색결과 입니다.</h1>
             </div>
           </Grid.Column>
         </Grid.Row>
