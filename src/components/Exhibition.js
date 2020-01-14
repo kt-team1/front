@@ -37,6 +37,7 @@ function Exhibition({type, id, title, place, address, date, time, price, poster,
                     to={{
                     pathname: `/search/${id}`,
                     state: {
+                        id,
                         title,
                         place,
                         address,

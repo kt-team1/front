@@ -176,7 +176,7 @@ class SearchDetail extends React.Component {
                                 <Button size="huge" content='온라인전시' 
                                 style={{ visibility: location.state.type === 'online' ? 'visible' : 'hidden'}}
                                 onClick={() => {
-                                    window.location = '/exhibition/detail/main';
+                                    window.location = '/exhibition/detail/' + location.state.id + '/main';
                                 }}/>
                             </div>
 
