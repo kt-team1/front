@@ -148,7 +148,7 @@ class ExhibitionDetail extends Component {
                         fontSize: '200%',
                         width:'18%',
                         }}/>
-                        {extra}
+                        <Link to="/exhibition/detail/main"><Button size="huge" content='온라인전시'/></Link>
                     </div>
                 </div>
             </div>
