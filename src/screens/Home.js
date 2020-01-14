@@ -228,19 +228,6 @@ class Home extends Component {
                     </Grid.Column>
                 </Grid>
             </div>
-
-            // <div class="home">
-            //     <div class="home_search_bar">
-            //         <SearchBar />
-            //     </div>
-
-            //     <div class="home_lists">
-            //             <Recommendation title="추천 전시" />
-            //             <Recommendation title="기가지니 온라인 전시" />
-            //     </div>
-
-            // </div>
-
         )
     }
 }
