@@ -30,22 +30,10 @@
     gigagenie.init(options, function (result_cd, result_msg, extra) {
       console.log('Initialize Start');
       if (result_cd === 200) {
-        $.ajax({
-                  url:"http://211.254.213.185:5000/text",
-                  type:"POST",
-                  data:extra.voicetext, 
-                  contentType:  "application/x-www-form-urlencoded; charset=UTF-8",
-                  success: function(result) {
-                      if (result) {
-                          alert({voicetext});
-                      } else {
-                          alert({voicetext});
-                      }
-                  },
-                  error: function() {
-                      alert("에러 발생");
-                  }
-                })
+        $.post("http://211.254.213.185:5000/text", {name:"yesyes"},function(data, status){
+          $("#text").html(data+"<br>"+status);
+        });
+                
         //init 성공
         //callback 방식으로, TTS로 재생한 후 음성 인식을 할 경우
         var options={};
