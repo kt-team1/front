@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import './css/App.css';
 import Home from './screens/Home';
 import Search from './screens/Search';
@@ -12,7 +12,7 @@ import Exhibition from './components/Exhibition';
 
 function App() {
     return (
-      <HashRouter>
+      <BrowserRouter>
         <Route path="/" exact={true} component={Home}/>
         <Route path="/search" exact={true} component={Search}/>
         <Route path="/search/:id" component={SearchDetail}/>
@@ -20,7 +20,7 @@ function App() {
         <Route path="/exhibition/detail" component={ExhibitionDetail}/>
         <Route path="/exhibition/detail/main" component={ShowExhibition}/>
         <Route path="/exhibition/detail/pic" component={Picture}/>
-      </HashRouter>
+      </BrowserRouter>
     );
 }
 
