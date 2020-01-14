@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Button} from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 import LinesEllipsis from 'react-lines-ellipsis'
 
 
