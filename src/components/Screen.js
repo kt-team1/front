@@ -68,9 +68,9 @@ class Screen extends Component {
                         });
                     }.bind(this)}
                     style={{ visibility: this.state.right ? 'visible' : 'hidden'}} />
-                {/* <img id="picture" src={this.state.source}
+                <img id="picture" src={this.state.source}
                     width="100vw" height="100vh" />
-                    <Explain title="전시 제목" author="작가 이름" year="제작 연도" desc="작품 설명입니다"/> */}
+                    {/* <Explain title="전시 제목" author="작가 이름" year="제작 연도" desc="작품 설명입니다"/> */}
             </div>
         );
     }
