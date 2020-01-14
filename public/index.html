@@ -36,6 +36,11 @@
         options.voicemsg="생년월일을 말해 주세요"
         gigagenie.voice.getVoiceText(options,function(result_cd,result_msg,extra){
             if(result_cd===200){
+              axios.post('/text', {
+                  text: 'textzzzz'
+              })
+              .then( response => { console.log(response) } )
+              .catch( response => { console.log(response) } );
                 console.log("Received Text is "+extra.voicetext);
             };
         });
