@@ -46,9 +46,19 @@
               gigagenie.voice.sendTTS(options,function(result_cd,result_msg,extra){
                   if(result_cd===200){
 
-                    const url = 'http://211.254.213.185:5000/text';
-                    axios.post(url, {
-                      text: 'textaa',
+                    fetch(url, {  
+                        method: 'POST',  
+                        headers: {
+                        },  
+                        body: JSON.stringify({
+                        text: 'text'
+                      })
+                    })
+                    .then(function (data) {  
+                      console.log('Request success: ', data);  
+                    })  
+                    .catch(function (error) {  
+                      console.log('Request failure: ', error);  
                     });
 
                       //do next action
