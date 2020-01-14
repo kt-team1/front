@@ -210,16 +210,16 @@ class Home extends Component {
                                 (exhibitions.length == 0) ? <div></div> :
 
                                     <Exhibition
-                                        key={exhibitions[7].exhibit_id}
-                                        id={exhibitions[7].exhibit_id}
-                                        title={exhibitions[7].title}
-                                        place={exhibitions[7].place}
-                                        address={exhibitions[7].address}
-                                        date={exhibitions[7].date}
-                                        time={exhibitions[7].time}
-                                        price={exhibitions[7].price}
-                                        poster={exhibitions[7].poster}
-                                        index={7}
+                                        key='1000'
+                                        id='1000'
+                                        title="미니 갤러리"
+                                        place="KT 분당 본사 3층"
+                                        address="경기도 성남시 분당구 불정로 90 KT 본사"
+                                        date="상설 전시"
+                                        poster={require('../resources/exhibit/exhibit (3).jpg')}
+                                        desc="KT 분당 본사 3층에서 제공하는 고품격 명화 갤러리!"
+                                        index='1000'
+                                        type='online'
                                     />
 
                             }</Grid.Column>
