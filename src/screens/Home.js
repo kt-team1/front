@@ -7,6 +7,7 @@ import Exhibition from '../components/Exhibition'
 import '../css/Search.css'
 import axios from "axios"
 
+var options = {};
 function init() {
     options = {};
     options.keytype = "GBOXDEVM"; // 개발(GBOXDEVM) 또는 상용(GBOXCOMM) 키 종류 입력
