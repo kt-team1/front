@@ -11,6 +11,7 @@ class SearchBar extends Component {
                 <p style={{fontSize: '1.3vw'}}>-</p>
                 <p style={{fontSize: '1.3vw'}}>"광화문 주변 전시회 보여줘"</p>
                 <p style={{fontSize: '1.3vw'}}>"기가지니 온라인 전시회 보여줘"</p>
+                
             </div>
         );
     }
