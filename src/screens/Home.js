@@ -7,6 +7,19 @@ import Exhibition from '../components/Exhibition'
 import '../css/Search.css'
 import axios from "axios"
 
+function startGenie(){
+    var options={};
+        options.mode=1
+        options.voicemsg="기가지니, 온라인 전시 서비스 시작합니다."
+        gigagenie.voice.getVoiceText(options,function(result_cd,result_msg,extra){
+            if(result_cd===200){
+                console.log("Received Text is "+extra.voicetext);
+            };
+        });
+}
+
+
+
 class Home extends Component {
     state = {
         isLoading: true,
@@ -33,6 +46,9 @@ class Home extends Component {
         console.log("render start");
         return (
             <div class="home">
+                <div>
+                    <startGenie/>
+                </div>
                 <Grid style={{
                     width: '100%',
                     height: '100%',
