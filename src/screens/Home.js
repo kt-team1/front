@@ -20,6 +20,7 @@ class Home extends Component {
                 search
             }
         } = await axios.get('http://211.254.213.185:5000/searchapi');
+        console.log(search);
         this.setState({ exhibitions: search, isLoading: false })
     }
 
@@ -68,8 +69,8 @@ class Home extends Component {
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
                                     <Exhibition
-                                        key={exhibitions[0].exhibit_id}
-                                        id={exhibitions[0].exhibit_id}
+                                        key={exhibitions[0].id}
+                                        id={exhibitions[0].id}
                                         title={exhibitions[0].title}
                                         place={exhibitions[0].place}
                                         address={exhibitions[0].address}
@@ -83,8 +84,8 @@ class Home extends Component {
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
                                     <Exhibition
-                                        key={exhibitions[1].exhibit_id}
-                                        id={exhibitions[1].exhibit_id}
+                                        key={exhibitions[1].id}
+                                        id={exhibitions[1].id}
                                         title={exhibitions[1].title}
                                         place={exhibitions[1].place}
                                         address={exhibitions[1].address}
@@ -98,8 +99,8 @@ class Home extends Component {
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
                                     <Exhibition
-                                        key={exhibitions[2].exhibit_id}
-                                        id={exhibitions[2].exhibit_id}
+                                        key={exhibitions[2].id}
+                                        id={exhibitions[2].id}
                                         title={exhibitions[2].title}
                                         place={exhibitions[2].place}
                                         address={exhibitions[2].address}
@@ -113,8 +114,8 @@ class Home extends Component {
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
                                     <Exhibition
-                                        key={exhibitions[3].exhibit_id}
-                                        id={exhibitions[3].exhibit_id}
+                                        key={exhibitions[3].id}
+                                        id={exhibitions[3].id}
                                         title={exhibitions[3].title}
                                         place={exhibitions[3].place}
                                         address={exhibitions[3].address}
@@ -148,8 +149,8 @@ class Home extends Component {
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
                                     <Exhibition
-                                        key={exhibitions[0].exhibit_id}
-                                        id={exhibitions[0].exhibit_id}
+                                        key={exhibitions[0].id}
+                                        id={exhibitions[0].id}
                                         title={exhibitions[0].title}
                                         place={exhibitions[0].place}
                                         address={exhibitions[0].address}
@@ -163,8 +164,8 @@ class Home extends Component {
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
                                     <Exhibition
-                                        key={exhibitions[1].exhibit_id}
-                                        id={exhibitions[1].exhibit_id}
+                                        key={exhibitions[1].id}
+                                        id={exhibitions[1].id}
                                         title={exhibitions[1].title}
                                         place={exhibitions[1].place}
                                         address={exhibitions[1].address}
@@ -178,8 +179,8 @@ class Home extends Component {
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
                                     <Exhibition
-                                        key={exhibitions[2].exhibit_id}
-                                        id={exhibitions[2].exhibit_id}
+                                        key={exhibitions[2].id}
+                                        id={exhibitions[2].id}
                                         title={exhibitions[2].title}
                                         place={exhibitions[2].place}
                                         address={exhibitions[2].address}
@@ -193,8 +194,8 @@ class Home extends Component {
                             <Grid.Column>{
                                 (exhibitions.length == 0) ? <div></div> :
                                     <Exhibition
-                                        key={exhibitions[3].exhibit_id}
-                                        id={exhibitions[3].exhibit_id}
+                                        key={exhibitions[3].id}
+                                        id={exhibitions[3].id}
                                         title={exhibitions[3].title}
                                         place={exhibitions[3].place}
                                         address={exhibitions[3].address}
