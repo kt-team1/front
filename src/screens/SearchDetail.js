@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { withRouter } from 'react-router-dom';
 
@@ -10,6 +11,9 @@ class SearchDetail extends React.Component {
         history.push("/");
         }
     }
+    state = {
+        img: require('../resources/home-icon.JPG')
+      };
     render() {
         const { location } = this.props;
         console.log(location.state)
@@ -25,8 +29,14 @@ class SearchDetail extends React.Component {
                         height:'100%',
                         textAlign: 'center',
                         padding: '16px'
-                        }}><img src={location.state.poster}
-                            alt="" style={{height: '100%', width: '100%', objectFit: 'cover'}}/>
+                        }}>
+                            <div style={{height: '7%', width: '100%', objectFit: 'cover'}} >
+                    <div style={{height: '100%', width: '10%', objectFit: 'cover', float:"left"}}></div><Link to="/">
+              <img style = {{float:"left",}} src={this.state.img}
+                width="6%" height="80%"></img></Link></div>
+                            <img src={location.state.poster}
+                            alt="" style={{height: '80%', width: '80%', objectFit: 'cover'}}/>
+                            <div style={{height: '13%', width: '100%', objectFit: 'cover'}}></div>
                     </Grid.Column>
                     <Grid.Column width={8} style={{
                         height:'100%'
@@ -169,6 +179,17 @@ class SearchDetail extends React.Component {
                                     window.location = '/exhibition/detail/main';
                                 }}/>
                             </div>
+// =======
+//                         <Button size="huge" labelPosition='left' icon='left chevron' content='뒤로가기' style={{
+//           backgroundColor:'pink',
+//           }} onClick={() => {
+//                             console.log("뒤로가기");
+//                         }}/>
+//                         <Link to="/exhibition/detail/main"><Button size="huge" content='온라인전시'style={{
+//           backgroundColor:'pink',
+//           }}/></Link>
+//                     </div>
+// >>>>>>> master
                         </Grid.Row>
                     </Grid.Column>
                 </Grid>

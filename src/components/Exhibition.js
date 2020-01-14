@@ -78,4 +78,4 @@ function Exhibition({type, id, title, place, address, date, time, price, poster,
 //     index: PropTypes.number
 // };
 
-export default Exhibition;
+export default Exhibition; 
