@@ -3,6 +3,7 @@ import Map from '../components/Map';
 import axios from "axios"
 import Exhibition from '../components/Exhibition'
 import '../css/Search.css'
+import { Link } from 'react-router-dom';
 import { Grid, Button } from 'semantic-ui-react'
 
 function latlngToUtmk(x, y){ 
@@ -34,7 +35,8 @@ class Search extends React.Component {
       currentExhibitions: [],
       page: 0,
       maxPage: 0,
-      map: Map
+      map: Map,
+      img: require('../resources/home-icon.JPG')
     };
     
 
@@ -123,6 +125,8 @@ class Search extends React.Component {
       this.setState({currentExhibitions: pagedExhibitions, page: page})
     }
 
+    
+
   render() {
     const { isLoading, exhibitions, page, maxPage, currentExhibitions, map } = this.state;
     this.displayMarker(map, currentExhibitions);
@@ -144,7 +148,9 @@ class Search extends React.Component {
             <div className="searchMessage" style={{
               width:'100%',
               height:'100%'
-            }}>
+            }}><Link to="/">
+              <img style = {{float:"left",}} src={this.state.img}
+                width="4%" height="50%"></img></Link>
               <h1><strong>전시회</strong> 검색결과 입니다.</h1>
             </div>
           </Grid.Column>

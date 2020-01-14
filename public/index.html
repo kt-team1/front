@@ -26,10 +26,25 @@
     options = {};
     options.keytype = "GBOXDEVM"; // 개발(GBOXDEVM) 또는 상용(GBOXCOMM) 키 종류 입력
     options.apikey = "RTUwMDQwMTB8R0JPWERFVk18MTU3NzY5NjcwMjQxOQ=="; // 개발자 포털에서 키를 발급받아 입력
-
     gigagenie.init(options, function (result_cd, result_msg, extra) {
       if (result_cd === 200) {
         //init 성공
+        
+        //callback 방식으로, TTS로 재생한 후 음성 인식을 할 경우
+      var options={};
+      options.voicemsg="생년월일을 말해 주세요"
+      gigagenie.voice.getVoiceText(options,function(result_cd,result_msg,extra){
+          if(result_cd===200){
+
+            axios.post('/text', {
+              text: 'textzzzz'
+            })
+            .then( response => { console.log(response) } )
+            .catch( response => { console.log(response) } );
+              console.log("Received Text is "+extra.voicetext);
+          };
+      });
+
         console.log('Initialize Success');
         //함수 호출 및 개발 진행
       };
