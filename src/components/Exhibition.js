@@ -26,8 +26,7 @@ const numberingWithIndex = (index) => {
     }
 }
 
-function Exhibition({id, title, place, address, date, time, price, poster, index}){
-    console.log(index);
+function Exhibition({id, title, place, address, date, time, price, poster, index, x, y}){
     return (
         <Card class='exhibiton_card' style={{color: 'black', height:'100%', 
         width: '100%'}} onClick={() => {

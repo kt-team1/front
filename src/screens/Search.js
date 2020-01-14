@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
-import Map from '../components/Map'
+import Map from '../components/Map';
 import axios from "axios"
 import Exhibition from '../components/Exhibition'
 import '../css/Search.css'
-import { Grid, Button, Form } from 'semantic-ui-react'
-
-const getMap = () => (
-  <div>
-    <Map/>
-  </div>
-)
+import { Grid, Button } from 'semantic-ui-react'
 
 const pagingExhibitions = (exhibitions, page) => {
   const pagedExhibitions = [];
@@ -43,44 +37,30 @@ class Search extends React.Component {
             search
           }
       } = await axios.get('http://211.254.213.185:5000/searchapi');
-      // const result = await axios.get('http://211.254.213.185:5000/searchapi');
-      // console.log(result);
+      console.log('getExhibitons()');
       const pagedExhibitions = pagingExhibitions(search, 0);
       const maxPage = parseInt(search.length/6);
-      console.log(search);
-      this.setState({exhibitions: search, currentExhibitions:pagedExhibitions, maxPage: maxPage, isLoading: false})
+      this.setState({exhibitions: search, currentExhibitions: pagedExhibitions, maxPage: maxPage, isLoading: false})
     }
 
-    async componentDidMount() {
+    async componentWillMount() {
       this.getExhibitions();
     }
+    // async componentDidMount() {
+    //   this.getExhibitions();
+    // }
 
     nextPaging = (exhibitions, page) => {
       const pagedExhibitions = pagingExhibitions(exhibitions, page)
       this.setState({currentExhibitions: pagedExhibitions, page: page})
     }
 
-    // presentExhibition = (index) => {
-    //   const { currentExhibitions } = this.state
-    //     (currentExhibitions.length <= index)? <div></div> :
-    //     <Exhibition
-    //       key={currentExhibitions[index].exhibit_id}
-    //       id={currentExhibitions[index].exhibit_id}
-    //       title={currentExhibitions[index].title}
-    //       place={currentExhibitions[index].place}
-    //       address={currentExhibitions[index].address}
-    //       date={currentExhibitions[index].date}
-    //       time={currentExhibitions[index].time}
-    //       price={currentExhibitions[index].price}
-    //       poster={currentExhibitions[index].poster}
-    //       index={index}
-    //     />                     
-    // }
-
   render() {
-    const { isLoading, exhibitions, page, maxPage, currentExhibitions } = this.state
-    console.log("render()");
+    const { isLoading, exhibitions, page, maxPage, currentExhibitions } = this.state;
+    console.log('render()');
+    console.log(currentExhibitions);
     return (
+      
       <Grid style={{
         width: '100%',
         height: '100%',
@@ -116,7 +96,7 @@ class Search extends React.Component {
               height: '100%'
             }}>
               <div id='map_div'>
-                {getMap()}
+                  <Map exhibitions={currentExhibitions}/>
               </div>
             </div>
           </Grid.Column>
@@ -146,6 +126,8 @@ class Search extends React.Component {
                       price={currentExhibitions[0].price}
                       poster={currentExhibitions[0].poster}
                       index={0}
+                      x={currentExhibitions[0].latitude}
+                      y={currentExhibitions[0].latitude}
                     />                     
                   }
                 </Grid.Column>
@@ -270,7 +252,6 @@ class Search extends React.Component {
                         } else {
                           this.nextPaging(exhibitions, 0);
                         }
-                        console.log("test");
                       }}/>
                     </div>
                   </Grid.Column>
