@@ -15,7 +15,7 @@ class Screen extends Component {
             source: '',
             right: false,
             img: '',
-            back: false, 
+            back: false,
             step: true
         }
     };
@@ -31,9 +31,9 @@ class Screen extends Component {
 
         return (
             <div>
-                <img id="up" src={require('../resources/arrow.png')} 
-                    style={{visibility: this.state.step ? 'visible' : 'hidden'}}
-                    onClick={function(e) {
+                <img id="up" src={require('../resources/arrow.png')}
+                    style={{ visibility: this.state.step ? 'visible' : 'hidden' }}
+                    onClick={function (e) {
                         // console.log("step");
                         try {
                             this.setState({
@@ -43,35 +43,35 @@ class Screen extends Component {
                             });
                         } catch {
                             alert("전시 관람이 종료되었습니다. \n기가지니 온라인 전시 화면으로 돌아갑니다.");
-                            window.location = '/exhibition';
+                            window.location = '/';
                         }
                     }.bind(this)} />
                 <img id="back" src={require('../resources/back.png')}
-                    style={{visibility: this.state.back ? 'visible' : 'hidden'}} 
-                    onClick={function(e) {
+                    style={{ visibility: this.state.back ? 'visible' : 'hidden' }}
+                    onClick={function (e) {
                         // console.log("back");
                         if (this.state.back === true) {
                             this.setState({
-                                source: this.state.data[this.state.id-1].source,
+                                source: this.state.data[this.state.id - 1].source,
                                 step: true,
                                 back: false
                             });
                         }
-                    }.bind(this)}/>
+                    }.bind(this)} />
                 <img id="right" src={require('../resources/right.png')}
-                    onClick={function(e) {
+                    onClick={function (e) {
                         // console.log("right");
                         this.setState({
                             step: false,
                             right: false,
-                            source: this.state.data[this.state.id-1].img, 
+                            source: this.state.data[this.state.id - 1].img,
                             back: true
                         });
                     }.bind(this)}
-                    style={{ visibility: this.state.right ? 'visible' : 'hidden'}} />
+                    style={{ visibility: this.state.right ? 'visible' : 'hidden' }} />
                 <img id="picture" src={this.state.source}
                     width="100vw" height="100vh" />
-                    {/* <Explain title="전시 제목" author="작가 이름" year="제작 연도" desc="작품 설명입니다"/> */}
+                {/* <Explain title="전시 제목" author="작가 이름" year="제작 연도" desc="작품 설명입니다"/> */}
             </div>
         );
     }
