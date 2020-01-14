@@ -7,6 +7,22 @@ import Exhibition from '../components/Exhibition'
 import '../css/Search.css'
 import axios from "axios"
 
+function init() {
+    options = {};
+    options.keytype = "GBOXDEVM"; // 개발(GBOXDEVM) 또는 상용(GBOXCOMM) 키 종류 입력
+    options.apikey = "RTUwMDQwMTB8R0JPWERFVk18MTU3NzY5NjcwMjQxOQ=="; // 개발자 포털에서 키를 발급받아 입력
+    gigagenie.init(options, function (result_cd, result_msg, extra) {
+      console.log('Initialize Start');
+      if (result_cd === 200) {
+        //init 성공
+        //callback 방식으로, TTS로 재생한 후 음성 인식을 할 경우
+        startGenie();
+        console.log('Initialize Success');
+        //함수 호출 및 개발 진행
+      };
+    });
+  }
+
 function startGenie(){
     var options={};
         options.mode=1
@@ -47,7 +63,7 @@ class Home extends Component {
         return (
             <div class="home">
                 <div>
-                    <startGenie/>
+                    <init/>
                 </div>
                 <Grid style={{
                     width: '100%',
