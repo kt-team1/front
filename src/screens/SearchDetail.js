@@ -156,5 +156,5 @@ class SearchDetail extends Component {
     }
 }
 
-export default exhibitionDetail;
+export default SearchDetail;
 
