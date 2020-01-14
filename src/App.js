@@ -11,17 +11,17 @@ import ExhibitionDetail from './screens/ExhibitionDetail';
 import Exhibition from './components/Exhibition';
 
 function App() {
-    return (
-      <BrowserRouter>
-        <Route path="/" exact={true} component={Home}/>
-        <Route path="/search" exact={true} component={Search}/>
-        <Route path="/search/:id" component={SearchDetail}/>
-        <Route path="/exhibition/" component={OnlineExhibition}/>
-        <Route path="/exhibition/detail" component={ExhibitionDetail}/>
-        <Route path="/exhibition/detail/main" component={ShowExhibition}/>
-        <Route path="/exhibition/detail/pic" component={Picture}/>
-      </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Route path="/" exact={true} component={Home}/>
+      <Route path="/search" exact={true} component={Search}/>
+      <Route path="/search/:id" exact={true} component={SearchDetail}/>
+      <Route path="/exhibition/" exact={true} component={OnlineExhibition}/>
+      <Route path="/exhibition/detail" exact={true} component={ExhibitionDetail}/>
+      <Route path="/exhibition/detail/main" exact={true} component={ShowExhibition}/>
+      <Route path="/exhibition/detail/pic" exact={true} component={Picture}/>
+    </BrowserRouter>
+  );
 }
 
 export default App;
